@@ -8,7 +8,19 @@ import Layout from '../layouts/Layout.astro';
 	subheading="16 topik dari seluruh 19 file materi kuliah — lengkap dengan quote para tokoh"
 >
 
-	<section class="topic" id="rangkuman">
+	<section class="chapter">
+		<div class="wrap">
+			<div class="chapter-inner" style="--ch: var(--ch1);">
+				<span class="chapter-chip">Bagian I</span>
+				<div>
+					<h2>Dasar Manajemen Bisnis</h2>
+					<p>Pengertian bisnis, ruang lingkupnya, dan lingkungan bisnis</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="topic" id="rangkuman" data-chapter="1">
 		<div class="wrap">
 <div class="sec-title"><span class="num">1</span><h2>Bisnis dan Ruang Lingkupnya</h2></div>
 <p class="sec-sub">Sumber: <i>Bisnis dan Ruang Lingkupnya (2).pptm</i> — Moh Haris, SE, M.Si</p>
@@ -95,7 +107,7 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t2">
+	<section class="topic" id="t2" data-chapter="1">
 		<div class="wrap">
 <div class="sec-title"><span class="num">2</span><h2>Lingkungan Bisnis</h2></div>
 <p class="sec-sub">Sumber: <i>Lingkungan Bisnis.pptx</i> — Moh Haris, SE, M.Si</p>
@@ -173,7 +185,19 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t3">
+	<section class="chapter">
+		<div class="wrap">
+			<div class="chapter-inner" style="--ch: var(--ch2);">
+				<span class="chapter-chip">Bagian II</span>
+				<div>
+					<h2>Perencanaan & Pengorganisasian</h2>
+					<p>Strategi, tujuan, MBO, dan struktur organisasi</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="topic" id="t3" data-chapter="2">
 		<div class="wrap">
 <div class="sec-title"><span class="num">3</span><h2>Perencanaan Organisasi</h2></div>
 <p class="sec-sub">Sumber: <i>Perencanaan-1.ppt</i>, <i>Perencanaan 2.ppt</i>, <i>Perencanaan 3.ppt</i></p>
@@ -284,7 +308,7 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t4">
+	<section class="topic" id="t4" data-chapter="2">
 		<div class="wrap">
 <div class="sec-title"><span class="num">4</span><h2>Pengorganisasian &amp; Struktur Organisasi</h2></div>
 <p class="sec-sub">Sumber: <i>Pengorganisasian dan Struktur Organisasi.pptx</i></p>
@@ -338,7 +362,19 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t5">
+	<section class="chapter">
+		<div class="wrap">
+			<div class="chapter-inner" style="--ch: var(--ch3);">
+				<span class="chapter-chip">Bagian III</span>
+				<div>
+					<h2>Kepemimpinan</h2>
+					<p>Definisi, gaya kepemimpinan, dan teori kontingensi</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="topic" id="t5" data-chapter="3">
 		<div class="wrap">
 <div class="sec-title"><span class="num">5</span><h2>Kepemimpinan (Leadership)</h2></div>
 <p class="sec-sub">Sumber: <i>10. kepemimpinan.ppt</i></p>
@@ -397,7 +433,7 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t6">
+	<section class="topic" id="t6" data-chapter="3">
 		<div class="wrap">
 <div class="sec-title"><span class="num">6</span><h2>Gaya Kepemimpinan Otoriter</h2></div>
 <p class="sec-sub">Sumber: <i>Gaya kepemimpinan Otoriter.pptx</i> — juga memuat pengertian gaya kepemimpinan &amp; teori-teori gaya</p>
@@ -449,7 +485,7 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t7">
+	<section class="topic" id="t7" data-chapter="3">
 		<div class="wrap">
 <div class="sec-title"><span class="num">7</span><h2>Gaya Kepemimpinan Demokratis</h2></div>
 <p class="sec-sub">Sumber: <i>GAYA KEPEMIMPINAN DEMOKRATIS.pptx</i></p>
@@ -499,7 +535,7 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t8">
+	<section class="topic" id="t8" data-chapter="3">
 		<div class="wrap">
 <div class="sec-title"><span class="num">8</span><h2>Gaya Kepemimpinan Laissez-Faire</h2></div>
 <p class="sec-sub">Sumber: <i>GAYA LAISSEZ FAIREZ.pptx</i></p>
@@ -544,7 +580,7 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t9">
+	<section class="topic" id="t9" data-chapter="3">
 		<div class="wrap">
 <div class="sec-title"><span class="num">9</span><h2>Teori Kepemimpinan Kontingensi — Hersey &amp; Blanchard</h2></div>
 <p class="sec-sub">Sumber: <i>Gaya Contingency.pptx</i> — Moh Haris, SE, M.Si</p>
@@ -607,7 +643,19 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t10">
+	<section class="chapter">
+		<div class="wrap">
+			<div class="chapter-inner" style="--ch: var(--ch4);">
+				<span class="chapter-chip">Bagian IV</span>
+				<div>
+					<h2>Wirausaha</h2>
+					<p>Karakter wirausaha, 7 kebiasaan efektif, dan DISC</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="topic" id="t10" data-chapter="4">
 		<div class="wrap">
 <div class="sec-title"><span class="num">10</span><h2>Karakter Wirausaha</h2></div>
 <p class="sec-sub">Sumber: <i>BAB III. KARAKTER WIRAUSAHA.pptx</i> — Moh Haris, SE, M.Si</p>
@@ -657,7 +705,7 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t11">
+	<section class="topic" id="t11" data-chapter="4">
 		<div class="wrap">
 <div class="sec-title"><span class="num">11</span><h2>7 Kebiasaan Efektif — Stephen R. Covey</h2></div>
 <p class="sec-sub">Sumber: <i>BAB III. KARAKTER WIRAUSAHA.pptx</i> — panduan membangun karakter pribadi yang kuat</p>
@@ -717,7 +765,7 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t12">
+	<section class="topic" id="t12" data-chapter="4">
 		<div class="wrap">
 <div class="sec-title"><span class="num">12</span><h2>Karakter DISC</h2></div>
 <p class="sec-sub">Sumber: <i>KARAKTER DISC.pptx</i>, <i>TEST_DISC.xls</i>, <i>Lembar_Periksa DISC.xls</i></p>
@@ -785,7 +833,19 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="topic" id="t13">
+	<section class="chapter">
+		<div class="wrap">
+			<div class="chapter-inner" style="--ch: var(--ch5);">
+				<span class="chapter-chip">Bagian V</span>
+				<div>
+					<h2>Ide & Pengembangan Bisnis</h2>
+					<p>Gagasan usaha, ATM & SWOT, BMC, dan hambatan bisnis</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="topic" id="t13" data-chapter="5">
 		<div class="wrap">
 <div class="sec-title"><span class="num">13</span><h2>Gagasan Usaha</h2></div>
 <p class="sec-sub">Sumber: <i>Gagasan Usaha.pptx</i></p>
@@ -841,7 +901,7 @@ Melalui <b>segmentasi pasar</b> (memilah pasar heterogen menjadi kelompok homoge
 		</div>
 	</section>
 
-	<section class="topic" id="t14">
+	<section class="topic" id="t14" data-chapter="5">
 		<div class="wrap">
 <div class="sec-title"><span class="num">14</span><h2>Metode ATM &amp; SWOT — Mencari Gagasan Usaha Kreatif</h2></div>
 <p class="sec-sub">Sumber: <i>Mencari Gagasan Usaha Kreatif.pptx</i></p>
@@ -894,7 +954,7 @@ Melalui <b>segmentasi pasar</b> (memilah pasar heterogen menjadi kelompok homoge
 		</div>
 	</section>
 
-	<section class="topic" id="t15">
+	<section class="topic" id="t15" data-chapter="5">
 		<div class="wrap">
 <div class="sec-title"><span class="num">15</span><h2>Merancang Ide Bisnis dengan BMC</h2></div>
 <p class="sec-sub">Sumber: <i>Merancang Ide Bisnis dengan Pendekatan BMC.pptx</i></p>
@@ -954,7 +1014,7 @@ Melalui <b>segmentasi pasar</b> (memilah pasar heterogen menjadi kelompok homoge
 		</div>
 	</section>
 
-	<section class="topic" id="t16">
+	<section class="topic" id="t16" data-chapter="5">
 		<div class="wrap">
 <div class="sec-title"><span class="num">16</span><h2>Masalah dan Hambatan Bisnis</h2></div>
 <p class="sec-sub">Sumber: <i>Masalah dan Hambatan Bisnis.pptm</i></p>
