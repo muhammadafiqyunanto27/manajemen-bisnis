@@ -1064,51 +1064,6 @@ a.quick-card :focus-visible {
 }
 
 /* ---------- INTISARI & HAFALAN ---------- */
-.inti-jump {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-	margin: 0 0 12px;
-}
-.inti-jump a {
-	font: 700 12.5px/1.5 var(--sans);
-	letter-spacing: 0.04em;
-	text-transform: uppercase;
-	padding: 5px 12px;
-	border: 1px solid var(--border-strong);
-	border-radius: 999px;
-	color: var(--ink);
-	text-decoration: none;
-	transition: background 0.18s ease, color 0.18s ease;
-}
-.inti-jump a:hover,
-.inti-jump a:focus-visible {
-	background: var(--inverse);
-	color: var(--on-inverse);
-	border-color: var(--inverse);
-}
-.inti-group {
-	scroll-margin-top: 84px; /* ruang untuk topbar sticky saat lompat anchor */
-}
-.inti-ghead {
-	display: flex;
-	align-items: baseline;
-	flex-wrap: wrap;
-	gap: 10px 12px;
-	margin: 36px 0 14px;
-	padding-bottom: 10px;
-	border-bottom: 1.5px solid var(--ink);
-}
-.inti-ghead h2 {
-	font-size: 22px;
-	margin: 0;
-}
-.inti-ghead .sec-hint {
-	margin-left: auto;
-}
-.inti-group:first-of-type .inti-ghead {
-	margin-top: 4px;
-}
 .inti-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
@@ -1151,6 +1106,46 @@ a.quick-card :focus-visible {
 	background: var(--ink);
 }
 .card ul.inti-list strong {
+	font-weight: 700;
+}
+.istilah-wrap {
+	margin-top: 14px;
+	padding-top: 12px;
+	border-top: 1px dashed var(--border-strong);
+}
+.card h4.istilah-title {
+	margin: 0 0 8px;
+	font-size: 12.5px;
+	font-weight: 700;
+	font-family: var(--sans);
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+.istilah + .istilah {
+	margin-top: 12px;
+}
+p.istilah-apa {
+	margin: 0 0 6px;
+	font-size: 14.5px;
+	line-height: 1.6;
+}
+p.istilah-apa b {
+	font-weight: 700;
+}
+ol.istilah-isi {
+	margin: 0;
+	padding-left: 22px;
+	display: grid;
+	gap: 4px;
+}
+ol.istilah-isi li {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.55;
+	padding-left: 2px;
+}
+ol.istilah-isi li::marker {
 	font-weight: 700;
 }
 .kutipan-grid {
@@ -1691,12 +1686,10 @@ footer p + p {
 	.qbox,
 	.syl-chapter,
 	.card.inti,
-	.kcard {
+	.kcard,
+	.istilah {
 		break-inside: avoid;
 		box-shadow: none;
-	}
-	.inti-jump {
-		display: none;
 	}
 	.label,
 	.tag,

@@ -6,81 +6,68 @@ import { intisari, kutipan } from '../data/intisari';
 const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 const poinCount = intisari.reduce((s, t) => s + t.poin.length, 0);
 const chapOf = new Map(topics.map((t) => [t.n, t.chapter]));
-const groups = chapters
-	.map((c) => ({ ...c, items: intisari.filter((t) => chapOf.get(t.n) === c.n) }))
-	.filter((g) => g.items.length > 0);
-const judulTopik = new Map(topics.map((t) => [t.n, t.title]));
+const bagian = chapters
+	.map((c) => {
+		const list = intisari.filter((t) => chapOf.get(t.n) === c.n);
+		return {
+			...c,
+			list,
+			poin: list.reduce((s, t) => s + t.poin.length, 0),
+			istilah: list.reduce((s, t) => s + t.istilah.length, 0),
+		};
+	})
+	.filter((b) => b.list.length > 0);
 ---
 
 <Layout
 	title="Intisari & Hafalan — Persiapan UTS Manajemen Bisnis"
-	description="Intisari seluruh materi Manajemen Bisnis: poin hafalan ringkas per topik plus kutipan tokoh."
+	description="Intisari materi Manajemen Bisnis per bagian: poin hafalan, penjelasan istilah kunci, dan kutipan tokoh."
 	active="intisari"
-	crumb="Intisari · Poin Hafalan"
+	crumb={`Intisari · ${bagian.length + 1} Halaman`}
 	heading="Intisari & Hafalan"
-	subheading={`${intisari.length} topik → ${poinCount} poin inti + ${kutipan.length} kutipan tokoh. Versi paling ringkas dari seluruh rangkuman.`}
+	subheading={`${intisari.length} topik → ${poinCount} poin hafalan + ${kutipan.length} kutipan tokoh. Tiap istilah kunci dijelaskan: apa itu, lalu isinya apa saja.`}
 >
 	<div class="wrap page-body">
-		<div class="inti-jump">
-			{groups.map((g) => <a href={`#bagian-${g.n}`}>Bagian {g.roman}</a>)}
-			<a href="#kutipan">Kutipan Tokoh</a>
-		</div>
 		<p class="note">
-			Cara pakai: baca tiap poin dengan suara keras, tutup layarnya, lalu ulangi dari
-			ingatan. <b>Kata tebal</b> = kunci yang wajib hafal.
+			Cara pakai: baca per bagian — tiap topik punya <b>poin ringkas</b> untuk hafalan cepat
+			dan <b>istilah kunci</b> yang dijelaskan runut (apa itu → isinya apa saja) biar paham
+			bukan cuma hafal. Cari kata tertentu dengan <b>Ctrl + K</b>.
 		</p>
-
-		{
-			groups.map((g) => (
-				<section class="inti-group" id={`bagian-${g.n}`}>
-					<div class="inti-ghead">
-						<span class="tag">Bagian {g.roman}</span>
-						<h2>{g.title}</h2>
-						<span class="sec-hint">{g.items.length} topik</span>
-					</div>
-					<div class="inti-grid">
-						{g.items.map((t) => (
-							<article class="card inti">
-								<h3>
-									<span class="tag inti-n">{t.n}</span>
-									{t.judul}
-								</h3>
-								<ul class="inti-list">
-									{t.poin.map((p) => (
-										<li set:html={p} />
-									))}
-								</ul>
-							</article>
-						))}
-					</div>
-				</section>
-			))
-		}
-
-		<section class="inti-group" id="kutipan">
-			<div class="inti-ghead">
-				<span class="tag">Kutipan</span>
-				<h2>Kutipan Tokoh untuk Dihafal</h2>
-				<span class="sec-hint">{kutipan.length} kutipan</span>
-			</div>
-			<div class="kutipan-grid">
+		<div class="syl-chapter">
+			<ul class="syl-topics syl--preview">
 				{
-					kutipan.map((k) => (
-						<figure class="kcard">
-							<span class="tag">{k.siapa}</span>
-							<blockquote>{k.teks}</blockquote>
-							<figcaption>
-								Topik {k.topik} · {judulTopik.get(k.topik)}
-							</figcaption>
-						</figure>
+					bagian.map((b) => (
+						<li>
+							<a class="syl-row" href={`${base}/intisari/${b.n}`}>
+								<span class="syl-n">{b.roman}</span>
+								<span class="syl-main">
+									<b>
+										Bagian {b.roman} · {b.title}
+									</b>
+									<small>
+										{b.list.length} topik · {b.poin} poin hafalan · {b.istilah} istilah
+										kunci
+									</small>
+								</span>
+								<span class="syl-arrow" aria-hidden="true">→</span>
+							</a>
+						</li>
 					))
 				}
-			</div>
-		</section>
-
-		<p class="note">
-			Hafalan kelar? Tes lewat <a href={`${base}/latihan`}>Latihan Soal</a>, atau tekan
-			<b>Ctrl + K</b> untuk mencari kata tertentu di seluruh materi.
-		</p>
+				<li>
+					<a class="syl-row" href={`${base}/intisari/kutipan`}>
+						<span class="syl-n">★</span>
+						<span class="syl-main">
+							<b>Kutipan Tokoh untuk Dihafal</b>
+							<small>
+								{kutipan.length} kutipan dari para ahli sepanjang materi — bahasa
+								asli + terjemahan
+							</small>
+						</span>
+						<span class="syl-arrow" aria-hidden="true">→</span>
+					</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 </Layout>

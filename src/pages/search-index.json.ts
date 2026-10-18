@@ -4,6 +4,43 @@ import { soalUts } from '../data/soalUts';
 import { latihanSoal } from '../data/latihanSoal';
 import { intisari, kutipan } from '../data/intisari';
 
+const chapOfInti = new Map(topics.map((t) => [t.n, t.chapter]));
+const intisariRecords = [
+	...chapters.flatMap((c) => {
+		const its = intisari.filter((t) => chapOfInti.get(t.n) === c.n);
+		if (!its.length) return [];
+		return [
+			{
+				kind: 'Intisari',
+				url: `intisari/${c.n}`,
+				title: `Intisari Bagian ${c.roman} — ${c.title}`,
+				meta: 'Poin hafalan + istilah kunci',
+				text: its
+					.map(
+						(t) =>
+							`${t.judul}: ${t.poin.join(' ').replace(/<[^>]+>/g, '')} ` +
+							t.istilah
+								.map(
+									(ist) =>
+										`${ist.nama} ${ist.apa.replace(/<[^>]+>/g, '')} ${ist.isi
+											.join(' ')
+											.replace(/<[^>]+>/g, '')}`
+								)
+								.join(' ')
+					)
+					.join(' '),
+			},
+		];
+	}),
+	{
+		kind: 'Intisari',
+		url: 'intisari/kutipan',
+		title: 'Kutipan Tokoh — Intisari & Hafalan',
+		meta: 'Kutipan untuk dihafal',
+		text: kutipan.map((k) => `${k.siapa}: ${k.teks}`).join(' '),
+	},
+];
+
 export const GET: APIRoute = () => {
 	const records = [
 		...topics.map((t) => {
@@ -30,18 +67,7 @@ export const GET: APIRoute = () => {
 			meta: s.paketTitle,
 			text: s.text,
 		})),
-		{
-			kind: 'Intisari',
-			url: 'intisari',
-			title: 'Intisari & Hafalan',
-			meta: 'Poin hafalan semua topik + kutipan tokoh',
-			text:
-				intisari
-					.map((t) => `${t.judul}: ${t.poin.join(' ').replace(/<[^>]+>/g, '')}`)
-					.join(' ') +
-				' ' +
-				kutipan.map((k) => `${k.siapa}: ${k.teks}`).join(' '),
-		},
+		...intisariRecords,
 	];
 	return new Response(JSON.stringify(records), {
 		headers: { 'Content-Type': 'application/json; charset=utf-8' },

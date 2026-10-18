@@ -1,0 +1,147 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Pager from '../../components/Pager.astro';
+import { topics, chapters } from '../../data/topics';
+import { intisari, kutipan, type Poin, type Kutipan } from '../../data/intisari';
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const judulTopik = new Map(topics.map((t) => [t.n, t.title]));
+
+export function getStaticPaths() {
+	const b = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+	const chapOf = new Map(topics.map((t) => [t.n, t.chapter]));
+	const bagian = chapters
+		.map((c) => ({
+			n: c.n,
+			roman: c.roman,
+			title: c.title,
+			list: intisari.filter((t) => chapOf.get(t.n) === c.n),
+		}))
+		.filter((x) => x.list.length > 0);
+	const items = [
+		...bagian.map((x) => ({
+			n: x.n,
+			short: x.roman,
+			href: `${b}/intisari/${x.n}`,
+		})),
+		{ n: bagian.length + 1, short: '★', href: `${b}/intisari/kutipan` },
+	];
+	return [
+		...bagian.map((x) => ({
+			params: { n: String(x.n) },
+			props: {
+				kind: 'bagian',
+				roman: x.roman,
+				judul: x.title,
+				list: x.list,
+				current: x.n,
+				items,
+			},
+		})),
+		{
+			params: { n: 'kutipan' },
+			props: {
+				kind: 'kutipan',
+				list: kutipan,
+				current: items[items.length - 1].n,
+				items,
+			},
+		},
+	];
+}
+
+interface Props {
+	kind: 'bagian' | 'kutipan';
+	roman?: string;
+	judul?: string;
+	list: Poin[] | Kutipan[];
+	current: number;
+	items: { n: number; short: string; href: string }[];
+}
+
+const { kind, roman, judul, list, current, items } = Astro.props;
+const poinList = kind === 'bagian' ? (list as Poin[]) : [];
+const kutipanList = kind === 'kutipan' ? (list as Kutipan[]) : [];
+const poinCount = poinList.reduce((s, t) => s + t.poin.length, 0);
+const istilahCount = poinList.reduce((s, t) => s + t.istilah.length, 0);
+const firstN = poinList[0]?.n;
+const lastN = poinList[poinList.length - 1]?.n;
+---
+
+<Layout
+	title={
+		kind === 'bagian'
+			? `${judul} — Intisari · Persiapan UTS Manajemen Bisnis`
+			: 'Kutipan Tokoh — Intisari · Persiapan UTS Manajemen Bisnis'
+	}
+	description={
+		kind === 'bagian'
+			? `Intisari Bagian ${roman}: ${judul} — poin hafalan & istilah kunci yang dijelaskan.`
+			: 'Kutipan tokoh untuk dihafal dari seluruh materi Manajemen Bisnis.'
+	}
+	active="intisari"
+	crumb={
+		kind === 'bagian'
+			? `Intisari · Bagian ${roman} · Topik ${firstN}–${lastN} dari ${intisari.length}`
+			: `Intisari · Kutipan Tokoh · ${kutipan.length} Kutipan`
+	}
+	heading={kind === 'bagian' ? judul : 'Kutipan Tokoh untuk Dihafal'}
+	subheading={
+		kind === 'bagian'
+			? `${poinCount} poin hafalan · ${istilahCount} istilah kunci dijelaskan (apa itu + isinya)`
+			: 'Bahasa asli + terjemahannya, lengkap dengan tokohnya.'
+	}
+>
+	<div class="wrap page-body">
+		{
+			kind === 'bagian' ? (
+				<div class="inti-grid">
+					{poinList.map((t) => (
+						<article class="card inti">
+							<h3>
+								<span class="tag inti-n">{String(t.n).padStart(2, '0')}</span>
+								{t.judul}
+							</h3>
+							<ul class="inti-list">
+								{t.poin.map((p) => (
+									<li set:html={p} />
+								))}
+							</ul>
+							{t.istilah.length > 0 && (
+								<div class="istilah-wrap">
+									<h4 class="istilah-title">Istilah Kunci</h4>
+									{t.istilah.map((ist) => (
+										<div class="istilah">
+											<p
+												class="istilah-apa"
+												set:html={`<b>${ist.nama}</b> — ${ist.apa}`}
+											/>
+											<ol class="istilah-isi">
+												{ist.isi.map((x) => (
+													<li set:html={x} />
+												))}
+											</ol>
+										</div>
+									))}
+								</div>
+							)}
+						</article>
+					))}
+				</div>
+			) : (
+				<div class="kutipan-grid">
+					{kutipanList.map((k) => (
+						<figure class="kcard">
+							<span class="tag">{k.siapa}</span>
+							<blockquote>{k.teks}</blockquote>
+							<figcaption>
+								Topik {k.topik} · {judulTopik.get(k.topik)}
+							</figcaption>
+						</figure>
+					))}
+				</div>
+			)
+		}
+	</div>
+	<Pager items={items} current={current} unit={kind === 'bagian' ? 'bagian' : 'halaman'} />
+</Layout>
