@@ -52,8 +52,6 @@ const sub = topic.source
 >
 	<div class="page-body">
 		<Comp />
-		<div class="wrap">
-			<Pager items={items} current={topic.n} unit="topik" />
-		</div>
 	</div>
+	<Pager items={items} current={topic.n} unit="topik" />
 </Layout>

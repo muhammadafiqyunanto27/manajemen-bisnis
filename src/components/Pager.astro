@@ -42,6 +42,9 @@ const next = idx >= 0 && idx < items.length - 1 ? items[idx + 1] : null;
 			)
 		}
 	</div>
+	<span class="pager-pos" aria-hidden="true">
+		{idx + 1} / {items.length}
+	</span>
 	{
 		next ? (
 			<a class="pager-btn" href={next.href} rel="next">

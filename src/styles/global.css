@@ -21,8 +21,8 @@
 	--shadow-sm: 0 1px 2px rgba(23, 22, 15, 0.06);
 	--shadow-md: 0 8px 26px rgba(23, 22, 15, 0.1);
 
-	--serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
-	--sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Segoe UI Variable Text',
+	--serif: 'Fraunces', Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+	--sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Segoe UI Variable Text',
 		Roboto, 'Helvetica Neue', Arial, sans-serif;
 
 	/* skala ukuran */
@@ -98,7 +98,7 @@ body {
 	background: var(--bg);
 	color: var(--ink);
 	font-size: var(--fs-base);
-	line-height: 1.65;
+	line-height: 1.7;
 	-webkit-font-smoothing: antialiased;
 	overflow-x: clip; /* jaring pengaman anti-overflow horizontal */
 	min-height: 100vh;
@@ -109,14 +109,29 @@ h2,
 h3 {
 	font-family: var(--serif);
 	font-weight: 700;
-	line-height: 1.25;
+	line-height: 1.22;
+	letter-spacing: -0.01em;
+	font-optical-sizing: auto;
+	text-wrap: balance;
 	overflow-wrap: break-word;
+}
+h1 {
+	letter-spacing: -0.02em;
 }
 h4,
 h5 {
 	font-weight: 700;
-	line-height: 1.4;
+	line-height: 1.45;
 	overflow-wrap: break-word;
+}
+.card p,
+.card li,
+.answer p,
+.answer li,
+.qbox p,
+.quiz-q,
+.lead {
+	text-wrap: pretty;
 }
 a {
 	color: var(--ink);
@@ -1290,14 +1305,31 @@ hr.divider {
 	}
 }
 
-/* ---------- PAGER (navigasi halaman) ---------- */
+/* ---------- PAGER (navigasi halaman — sticky di bawah) ---------- */
 .pager {
+	position: sticky;
+	bottom: 0;
+	z-index: 40;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 	gap: 10px;
-	margin: 36px 0 12px;
+	margin-top: 36px;
+	padding: 13px 20px 15px;
+	background: var(--nav-bg);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	border-top: 1px solid var(--border);
+	box-shadow: 0 -8px 24px color-mix(in srgb, var(--ink) 7%, transparent);
+}
+.pager-pos {
+	display: none;
+	font-size: var(--fs-sm);
+	font-weight: 700;
+	color: var(--muted);
+	font-variant-numeric: tabular-nums;
+	align-items: center;
 }
 .pager-btn {
 	display: inline-flex;
@@ -1514,8 +1546,21 @@ footer p + p {
 	.sec-title {
 		margin-top: 36px;
 	}
+	/* pager mobile: baris ramping — prev | posisi | next */
+	.pager {
+		gap: 8px;
+		padding: 10px 16px 12px;
+	}
+	.pager-nums {
+		display: none;
+	}
+	.pager-pos {
+		display: inline-flex;
+	}
 	.pager-btn {
-		max-width: 100%;
+		max-width: none;
+		flex: 1;
+		justify-content: center;
 	}
 }
 
