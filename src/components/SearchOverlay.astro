@@ -1,0 +1,236 @@
+---
+interface Props {
+	base: string;
+}
+const { base } = Astro.props;
+---
+
+<div class="search" data-base={base}>
+	<button
+		type="button"
+		class="search-open"
+		id="searchOpen"
+		aria-label="Cari materi (Ctrl+K)"
+		aria-haspopup="dialog"
+	>
+		<svg viewBox="0 0 24 24" aria-hidden="true">
+			<circle cx="11" cy="11" r="7"></circle>
+			<path d="m20 20-3.5-3.5"></path>
+		</svg>
+		<span class="search-open-label">Cari</span>
+		<kbd class="search-kbd">Ctrl K</kbd>
+	</button>
+
+	<div class="search-overlay" id="searchOverlay" hidden>
+		<div class="search-panel" role="dialog" aria-modal="true" aria-label="Cari materi">
+			<div class="search-field">
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+					<circle cx="11" cy="11" r="7"></circle>
+					<path d="m20 20-3.5-3.5"></path>
+				</svg>
+				<input
+					type="search"
+					id="searchInput"
+					placeholder="Cari judul atau isi materi…"
+					autocomplete="off"
+					spellcheck="false"
+					aria-label="Kata kunci pencarian"
+				/>
+				<button type="button" class="search-esc" id="searchEsc">ESC</button>
+			</div>
+			<p class="search-hint" id="searchHint">
+				Ketik minimal 2 karakter — cari dari judul maupun isi rangkuman, jawaban UTS, dan latihan soal.
+			</p>
+			<ul class="search-results" id="searchResults" hidden></ul>
+		</div>
+	</div>
+</div>
+
+<script is:inline>
+	(() => {
+		const openBtn = document.getElementById('searchOpen');
+		const overlay = document.getElementById('searchOverlay');
+		const input = document.getElementById('searchInput');
+		const hint = document.getElementById('searchHint');
+		const list = document.getElementById('searchResults');
+		const escBtn = document.getElementById('searchEsc');
+		if (!openBtn || !overlay || !input || !hint || !list) return;
+
+		const base = (document.querySelector('.search')?.dataset.base || '').replace(/\/$/, '');
+		let records = null;
+		let loading = false;
+		let activeIdx = -1;
+		let debounce = null;
+		let lastFocus = null;
+
+		const loadIndex = async () => {
+			if (records || loading) return;
+			loading = true;
+			try {
+				const res = await fetch(base + '/search-index.json');
+				records = await res.json();
+			} catch {
+				records = [];
+				hint.textContent = 'Gagal memuat indeks pencarian. Coba muat ulang halaman.';
+				hint.hidden = false;
+			}
+			loading = false;
+		};
+
+		const escHtml = (s) =>
+			String(s).replace(/[&<>"]/g, (c) =>
+				c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : '&quot;'
+			);
+
+		const mark = (text, tokens) => {
+			let out = escHtml(text);
+			for (const t of tokens) {
+				if (!t) continue;
+				const re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+				out = out.replace(re, '<mark>$1</mark>');
+			}
+			return out;
+		};
+
+		const rawSnippet = (text, tokens) => {
+			const lower = text.toLowerCase();
+			let pos = -1;
+			for (const t of tokens) {
+				const p = lower.indexOf(t);
+				if (p >= 0 && (pos < 0 || p < pos)) pos = p;
+			}
+			if (pos < 0) pos = 0;
+			const start = Math.max(0, pos - 45);
+			const slice = text.slice(start, start + 160);
+			return (start > 0 ? '…' : '') + slice + (start + 160 < text.length ? '…' : '');
+		};
+
+		const run = (q) => {
+			list.innerHTML = '';
+			activeIdx = -1;
+			const tokens = q.toLowerCase().split(/\s+/).filter(Boolean);
+			if (tokens.length < 1 || !records) {
+				hint.hidden = false;
+				list.hidden = true;
+				return;
+			}
+			const scored = [];
+			for (const r of records) {
+				const t = r.title.toLowerCase();
+				const tx = r.text.toLowerCase();
+				const meta = (r.meta || '').toLowerCase();
+				let score = 0;
+				let ok = true;
+				for (const tok of tokens) {
+					let s = 0;
+					if (t.includes(tok)) s += 12;
+					if (meta.includes(tok)) s += 5;
+					const cnt = tx.split(tok).length - 1;
+					if (cnt > 0) s += Math.min(cnt, 6) * 2;
+					if (s === 0) {
+						ok = false;
+						break;
+					}
+					score += s;
+				}
+				if (ok) scored.push({ r, score });
+			}
+			scored.sort((a, b) => b.score - a.score);
+
+			hint.hidden = true;
+			list.hidden = false;
+			if (!scored.length) {
+				const li = document.createElement('li');
+				li.className = 'search-empty';
+				li.textContent = 'Tidak ada hasil untuk “' + q + '”';
+				list.appendChild(li);
+				return;
+			}
+			for (const { r } of scored.slice(0, 20)) {
+				const li = document.createElement('li');
+				li.className = 'search-item';
+				const a = document.createElement('a');
+				a.href = base + '/' + r.url;
+				a.innerHTML =
+					'<span class="search-kind">' +
+					escHtml(r.kind) +
+					'</span><span class="search-body"><b>' +
+					mark(r.title, tokens) +
+					'</b><small>' +
+					mark(rawSnippet(r.text, tokens), tokens) +
+					'</small></span>';
+				li.appendChild(a);
+				list.appendChild(li);
+			}
+			activeIdx = -1;
+		};
+
+		const items = () => [...list.querySelectorAll('.search-item a')];
+
+		const moveActive = (dir) => {
+			const its = items();
+			if (!its.length) return;
+			if (activeIdx >= 0 && its[activeIdx]) its[activeIdx].classList.remove('active');
+			let next = activeIdx + dir;
+			if (next < 0) next = its.length - 1;
+			if (next >= its.length) next = 0;
+			activeIdx = next;
+			const el = its[activeIdx];
+			el.classList.add('active');
+			el.scrollIntoView({ block: 'nearest' });
+		};
+
+		const openSearch = async () => {
+			lastFocus = document.activeElement;
+			overlay.hidden = false;
+			document.body.classList.add('nav-open');
+			input.focus();
+			await loadIndex();
+			if (input.value.trim()) run(input.value.trim());
+		};
+
+		const closeSearch = () => {
+			overlay.hidden = true;
+			document.body.classList.remove('nav-open');
+			(lastFocus && lastFocus.focus ? lastFocus : openBtn).focus();
+		};
+
+		openBtn.addEventListener('click', openSearch);
+		escBtn && escBtn.addEventListener('click', closeSearch);
+		overlay.addEventListener('click', (e) => {
+			if (e.target === overlay) closeSearch();
+		});
+
+		input.addEventListener('input', () => {
+			clearTimeout(debounce);
+			debounce = setTimeout(() => run(input.value.trim()), 140);
+		});
+
+		input.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowDown') {
+				e.preventDefault();
+				moveActive(1);
+			} else if (e.key === 'ArrowUp') {
+				e.preventDefault();
+				moveActive(-1);
+			} else if (e.key === 'Enter') {
+				const its = items();
+				const target = activeIdx >= 0 ? its[activeIdx] : its[0];
+				if (target) {
+					e.preventDefault();
+					location.href = target.href;
+				}
+			}
+		});
+
+		document.addEventListener('keydown', (e) => {
+			if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+				e.preventDefault();
+				overlay.hidden ? openSearch() : closeSearch();
+			} else if (e.key === 'Escape' && !overlay.hidden) {
+				e.preventDefault();
+				closeSearch();
+			}
+		});
+	})();
+</script>

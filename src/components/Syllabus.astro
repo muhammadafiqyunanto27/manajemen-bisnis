@@ -1,0 +1,43 @@
+---
+import { chapters, topics } from '../data/topics';
+
+interface Props {
+	base: string;
+	showDesc?: boolean;
+}
+const { base, showDesc = true } = Astro.props;
+---
+
+<ol class="syl">
+	{
+		chapters.map((c) => {
+			const items = topics.filter((t) => t.chapter === c.n);
+			return (
+				<li class="syl-chapter">
+					<div class="syl-chead">
+						<span class="syl-roman">{c.roman}</span>
+						<div class="syl-ctext">
+							<h3>{c.title}</h3>
+							<p>{c.desc}</p>
+						</div>
+						<span class="syl-count">{items.length} topik</span>
+					</div>
+					<ul class="syl-topics">
+						{items.map((t) => (
+							<li>
+								<a class="syl-row" href={`${base}/rangkuman/${t.n}`}>
+									<span class="syl-n">{String(t.n).padStart(2, '0')}</span>
+									<span class="syl-main">
+										<b>{t.title}</b>
+										{showDesc && <small>{t.desc}</small>}
+									</span>
+									<span class="syl-arrow" aria-hidden="true">→</span>
+								</a>
+							</li>
+						))}
+					</ul>
+				</li>
+			);
+		})
+	}
+</ol>

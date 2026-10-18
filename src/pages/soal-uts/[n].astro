@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Pager from '../../components/Pager.astro';
+import { soalUts, type Soal } from '../../data/soalUts';
+
+const shortOf = (label: string) =>
+	label
+		.replace(/^Soal\s*/i, '')
+		.replace(/\s*\(.*$/, '')
+		.replace(/\s*[—–-]\s*/g, '')
+		.replace(/\s+/g, '')
+		.toLowerCase();
+
+export function getStaticPaths() {
+	return soalUts.map((s, i) => ({
+		params: { n: String(i + 1) },
+		props: { item: { ...s, n: i + 1 } },
+	}));
+}
+
+interface Props {
+	item: Soal & { n: number };
+}
+
+const { item } = Astro.props;
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const items = soalUts.map((s, i) => ({
+	n: i + 1,
+	short: shortOf(s.label),
+	href: `${base}/soal-uts/${i + 1}`,
+}));
+---
+
+<Layout
+	title={`${item.label} — Jawaban Soal UTS · Persiapan UTS Manajemen Bisnis`}
+	description={`Kunci jawaban ${item.label} — Manajemen Bisnis.`}
+	active="soal-uts"
+	crumb={`Jawaban Soal UTS · Soal ${item.n} dari ${soalUts.length}`}
+	heading={item.label}
+	subheading="Jawaban berdasarkan materi kuliah Manajemen Bisnis."
+>
+	<div class="wrap page-body">
+		<div class="qbox">
+			<span class="label">Pertanyaan</span>
+			<Fragment set:html={item.q} />
+		</div>
+		<div class="answer">
+			<span class="label">Jawaban</span>
+			<Fragment set:html={item.a} />
+		</div>
+		<Pager items={items} current={item.n} unit="soal" />
+	</div>
+</Layout>

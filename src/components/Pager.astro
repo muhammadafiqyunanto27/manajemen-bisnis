@@ -1,0 +1,56 @@
+---
+interface Item {
+	n: number;
+	short: string;
+	href: string;
+}
+interface Props {
+	items: Item[];
+	current: number;
+	unit?: string;
+}
+const { items, current, unit = 'halaman' } = Astro.props;
+const idx = items.findIndex((i) => i.n === current);
+const prev = idx > 0 ? items[idx - 1] : null;
+const next = idx >= 0 && idx < items.length - 1 ? items[idx + 1] : null;
+---
+
+<nav class="pager" aria-label={`Navigasi antar ${unit}`}>
+	{
+		prev ? (
+			<a class="pager-btn" href={prev.href} rel="prev">
+				<span aria-hidden="true">←</span> {prev.short}
+			</a>
+		) : (
+			<span class="pager-btn is-off" aria-disabled="true">
+				←
+			</span>
+		)
+	}
+	<div class="pager-nums">
+		{
+			items.map((i) =>
+				i.n === current ? (
+					<span class="pager-num active" aria-current="page">
+						{i.short}
+					</span>
+				) : (
+					<a class="pager-num" href={i.href}>
+						{i.short}
+					</a>
+				)
+			)
+		}
+	</div>
+	{
+		next ? (
+			<a class="pager-btn" href={next.href} rel="next">
+				{next.short} <span aria-hidden="true">→</span>
+			</a>
+		) : (
+			<span class="pager-btn is-off" aria-disabled="true">
+				→
+			</span>
+		)
+	}
+</nav>

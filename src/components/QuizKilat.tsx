@@ -42,7 +42,7 @@ export default function QuizKilat({ soal }: { soal: LatihanSoal[] }) {
 	return (
 		<div className="quiz">
 			<div className="quiz-head">
-				<span className="tag violet">⚡ Mode Kilat</span>
+				<span className="tag">Mode Kilat</span>
 				<span className="quiz-progress">
 					Soal {Math.min(idx + 1, order.length)} dari {order.length}
 				</span>
@@ -54,7 +54,7 @@ export default function QuizKilat({ soal }: { soal: LatihanSoal[] }) {
 			{!done ? (
 				<>
 					<div className="quiz-label">{current.label}</div>
-					<p className="quiz-q" dangerouslySetInnerHTML={{ __html: current.q }} />
+					<div className="quiz-q" dangerouslySetInnerHTML={{ __html: current.q }} />
 					{revealed ? (
 						<div className="quiz-a" dangerouslySetInnerHTML={{ __html: current.a }} />
 					) : (

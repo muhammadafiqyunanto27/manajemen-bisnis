@@ -1,11 +1,14 @@
 ---
 import '../styles/global.css';
+import SearchOverlay from '../components/SearchOverlay.astro';
+import { chapters, topics } from '../data/topics';
 
 interface Props {
 	title: string;
 	description?: string;
 	heading?: string;
 	subheading?: string;
+	crumb?: string;
 	active?: 'home' | 'rangkuman' | 'soal-uts' | 'latihan';
 }
 
@@ -14,38 +17,12 @@ const {
 	description = 'Persiapan UTS Manajemen Bisnis — rangkuman 19 file materi kuliah, quote tokoh, jawaban soal UTS, dan latihan soal.',
 	heading,
 	subheading,
+	crumb,
 	active,
 } = Astro.props;
 
 const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 const home = base === '' ? '/' : base;
-
-const chapters = [
-	{ roman: 'I', ch: 1, title: 'Dasar Manajemen Bisnis' },
-	{ roman: 'II', ch: 2, title: 'Perencanaan & Pengorganisasian' },
-	{ roman: 'III', ch: 3, title: 'Kepemimpinan' },
-	{ roman: 'IV', ch: 4, title: 'Wirausaha' },
-	{ roman: 'V', ch: 5, title: 'Ide & Pengembangan Bisnis' },
-];
-
-const topics = [
-	{ n: 1, id: 'rangkuman', label: 'Bisnis & Ruang Lingkupnya', ch: 1 },
-	{ n: 2, id: 't2', label: 'Lingkungan Bisnis', ch: 1 },
-	{ n: 3, id: 't3', label: 'Perencanaan Organisasi', ch: 2 },
-	{ n: 4, id: 't4', label: 'Pengorganisasian & Struktur', ch: 2 },
-	{ n: 5, id: 't5', label: 'Kepemimpinan', ch: 3 },
-	{ n: 6, id: 't6', label: 'Gaya Otoriter', ch: 3 },
-	{ n: 7, id: 't7', label: 'Gaya Demokratis', ch: 3 },
-	{ n: 8, id: 't8', label: 'Gaya Laissez-Faire', ch: 3 },
-	{ n: 9, id: 't9', label: 'Teori Kontingensi Hersey-Blanchard', ch: 3 },
-	{ n: 10, id: 't10', label: 'Karakter Wirausaha', ch: 4 },
-	{ n: 11, id: 't11', label: '7 Kebiasaan Efektif', ch: 4 },
-	{ n: 12, id: 't12', label: 'Karakter DISC', ch: 4 },
-	{ n: 13, id: 't13', label: 'Gagasan Usaha', ch: 5 },
-	{ n: 14, id: 't14', label: 'Metode ATM & SWOT', ch: 5 },
-	{ n: 15, id: 't15', label: 'Business Model Canvas', ch: 5 },
-	{ n: 16, id: 't16', label: 'Masalah & Hambatan Bisnis', ch: 5 },
-];
 ---
 
 <!doctype html>
@@ -98,6 +75,7 @@ const topics = [
 						<a href={`${base}/soal-uts`} class={active === 'soal-uts' ? 'active' : ''}>Soal UTS</a>
 						<a href={`${base}/latihan`} class={active === 'latihan' ? 'active' : ''}>Latihan</a>
 					</div>
+					<SearchOverlay base={base} />
 					<button type="button" class="theme-toggle" id="themeToggle" aria-label="Ganti mode terang/gelap" aria-pressed="false">
 						<svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true">
 							<circle cx="12" cy="12" r="4"></circle>
@@ -121,15 +99,19 @@ const topics = [
 			</div>
 
 			<div class="drawer-pages">
-				<a href={home} class={active === 'home' ? 'active' : ''}>
+				<a href={home} data-nav="home">
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21H3z"></path></svg>
 					Beranda
 				</a>
-				<a href={`${base}/soal-uts`} class={active === 'soal-uts' ? 'active' : ''}>
+				<a href={`${base}/rangkuman`} data-nav="rangkuman">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+					Rangkuman Materi
+				</a>
+				<a href={`${base}/soal-uts`} data-nav="soal-uts">
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14v18l-7-4-7 4z"></path></svg>
 					Jawaban Soal UTS
 				</a>
-				<a href={`${base}/latihan`} class={active === 'latihan' ? 'active' : ''}>
+				<a href={`${base}/latihan`} data-nav="latihan">
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="m8 12 3 3 5-6"></path></svg>
 					Latihan Soal
 				</a>
@@ -137,20 +119,20 @@ const topics = [
 
 			{
 				chapters.map((c) => (
-					<div class="drawer-group" style={`--ch: var(--ch${c.ch});`}>
+					<div class="drawer-group">
 						<h4><span class="drawer-dot" />Bagian {c.roman} · {c.title}</h4>
 						<ul>
 							{topics
-								.filter((t) => t.ch === c.ch)
+								.filter((t) => t.chapter === c.n)
 								.map((t) => (
 									<li>
 										<a
-											href={`${base}/rangkuman#${t.id}`}
+											href={`${base}/rangkuman/${t.n}`}
 											class="drawer-link"
-											data-topic={t.id}
+											data-topic={t.n}
 										>
 											<span class="drawer-num">{t.n}</span>
-											{t.label}
+											{t.title}
 										</a>
 									</li>
 								))}
@@ -164,6 +146,7 @@ const topics = [
 			heading && (
 				<header class="page-hero">
 					<div class="wrap">
+						{crumb && <p class="crumb">{crumb}</p>}
 						<h1>{heading}</h1>
 						{subheading && <p>{subheading}</p>}
 					</div>
@@ -257,28 +240,17 @@ const topics = [
 					if (a) closeDrawer();
 				});
 
-				// --- Scrollspy: sorot topik aktif di drawer ---
-				const spyLinks = [...drawer.querySelectorAll('.drawer-link')];
-				const sections = spyLinks
-					.map((l) => document.getElementById(l.dataset.topic))
-					.filter(Boolean);
-				if (sections.length && 'IntersectionObserver' in window) {
-					const setActive = (id) => {
-						spyLinks.forEach((l) =>
-							l.classList.toggle('active', l.dataset.topic === id)
-						);
-					};
-					const visible = new Map();
-					const io = new IntersectionObserver(
-						(entries) => {
-							entries.forEach((en) => visible.set(en.target.id, en.isIntersecting));
-							const firstVisible = sections.find((s) => visible.get(s.id));
-							if (firstVisible) setActive(firstVisible.id);
-						},
-						{ rootMargin: '-72px 0px -55% 0px', threshold: 0 }
-					);
-					sections.forEach((s) => io.observe(s));
-				}
+				// --- Navigasi aktif berdasarkan path halaman saat ini ---
+				const normPath = (p) => (p || '/').replace(/\/+$/, '') || '/';
+				const cur = normPath(location.pathname);
+				document.querySelectorAll('.drawer-pages a[data-nav]').forEach((l) => {
+					const href = normPath(l.getAttribute('href'));
+					l.classList.toggle('active', href === cur);
+				});
+				document.querySelectorAll('.drawer-link').forEach((l) => {
+					const href = normPath(l.getAttribute('href'));
+					l.classList.toggle('active', href === cur);
+				});
 
 				// --- Toggle tema ---
 				const toggle = document.getElementById('themeToggle');

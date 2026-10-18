@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Pager from '../../components/Pager.astro';
+import { latihanSoal, type SoalLatihan } from '../../data/latihanSoal';
+
+const shortOf = (label: string) =>
+	label
+		.replace(/^Soal\s*/i, '')
+		.replace(/\s*\(.*$/, '')
+		.replace(/\s*[—–-]\s*/g, '')
+		.replace(/\s+/g, '')
+		.toLowerCase();
+
+export function getStaticPaths() {
+	return latihanSoal.map((s, i) => ({
+		params: { n: String(i + 1) },
+		props: { item: { ...s, n: i + 1 } },
+	}));
+}
+
+interface Props {
+	item: SoalLatihan & { n: number };
+}
+
+const { item } = Astro.props;
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const items = latihanSoal.map((s, i) => ({
+	n: i + 1,
+	short: shortOf(s.label),
+	href: `${base}/latihan/${i + 1}`,
+}));
+---
+
+<Layout
+	title={`${item.label} — Latihan Soal · Persiapan UTS Manajemen Bisnis`}
+	description={`Kunci jawaban ${item.label} (${item.paketTitle}) — Manajemen Bisnis.`}
+	active="latihan"
+	crumb={`Latihan Soal · ${item.paketTitle} · Soal ${item.n} dari ${latihanSoal.length}`}
+	heading={item.label}
+	subheading={`${item.paketTitle} — kunci jawaban.`}
+>
+	<div class="wrap page-body">
+		<div class="qbox">
+			<span class="label">Pertanyaan</span>
+			<Fragment set:html={item.q} />
+		</div>
+		<div class="answer">
+			<span class="label">Jawaban</span>
+			<Fragment set:html={item.a} />
+		</div>
+		<Pager items={items} current={item.n} unit="soal" />
+	</div>
+</Layout>

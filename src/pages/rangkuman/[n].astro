@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Pager from '../../components/Pager.astro';
+import { topics, chapters, type Topic } from '../../data/topics';
+import T01 from '../../components/topics/T01.astro';
+import T02 from '../../components/topics/T02.astro';
+import T03 from '../../components/topics/T03.astro';
+import T04 from '../../components/topics/T04.astro';
+import T05 from '../../components/topics/T05.astro';
+import T06 from '../../components/topics/T06.astro';
+import T07 from '../../components/topics/T07.astro';
+import T08 from '../../components/topics/T08.astro';
+import T09 from '../../components/topics/T09.astro';
+import T10 from '../../components/topics/T10.astro';
+import T11 from '../../components/topics/T11.astro';
+import T12 from '../../components/topics/T12.astro';
+import T13 from '../../components/topics/T13.astro';
+import T14 from '../../components/topics/T14.astro';
+import T15 from '../../components/topics/T15.astro';
+import T16 from '../../components/topics/T16.astro';
+
+const compMap: Record<number, typeof T01> = {
+	1: T01, 2: T02, 3: T03, 4: T04, 5: T05, 6: T06, 7: T07, 8: T08,
+	9: T09, 10: T10, 11: T11, 12: T12, 13: T13, 14: T14, 15: T15, 16: T16,
+};
+
+export function getStaticPaths() {
+	return topics.map((t) => ({ params: { n: String(t.n) }, props: { topic: t } }));
+}
+
+interface Props {
+	topic: Topic;
+}
+
+const { topic } = Astro.props;
+const Comp = compMap[topic.n];
+const chap = chapters.find((c) => c.n === topic.chapter)!;
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const items = topics.map((t) => ({ n: t.n, short: String(t.n), href: `${base}/rangkuman/${t.n}` }));
+const sub = topic.source
+	? `Sumber materi: ${topic.source} · Dosen pengampu: Moh Haris, SE, M.Si`
+	: 'Disusun dari materi kuliah Manajemen Bisnis · Dosen pengampu: Moh Haris, SE, M.Si';
+---
+
+<Layout
+	title={`${topic.title} — Rangkuman · Persiapan UTS Manajemen Bisnis`}
+	description={`Rangkuman "${topic.title}" — ${topic.desc}.`}
+	active="rangkuman"
+	crumb={`Rangkuman · Bagian ${chap.roman} · ${chap.title} · Topik ${topic.n} dari ${topics.length}`}
+	heading={topic.title}
+	subheading={sub}
+>
+	<div class="page-body">
+		<Comp />
+		<div class="wrap">
+			<Pager items={items} current={topic.n} unit="topik" />
+		</div>
+	</div>
+</Layout>

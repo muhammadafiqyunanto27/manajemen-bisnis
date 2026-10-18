@@ -1,226 +1,66 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Syllabus from '../components/Syllabus.astro';
+import { topics } from '../data/topics';
+import { soalUts } from '../data/soalUts';
+import { latihanSoal } from '../data/latihanSoal';
 
 const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
-
-const groups = [
-	{
-		roman: 'I',
-		ch: 1,
-		title: 'Dasar Manajemen Bisnis',
-		desc: 'Pengertian bisnis dan lingkungannya',
-		items: [
-			{
-				n: 1,
-				href: `${base}/rangkuman`,
-				label: 'Bisnis & Ruang Lingkupnya',
-				desc: 'Pengertian 10 ahli, fungsi, tujuan, konsep, jenis bisnis',
-			},
-			{
-				n: 2,
-				href: `${base}/rangkuman#t2`,
-				label: 'Lingkungan Bisnis',
-				desc: 'Komponen internal, eksternal mikro &amp; makro',
-			},
-		],
-	},
-	{
-		roman: 'II',
-		ch: 2,
-		title: 'Perencanaan & Pengorganisasian',
-		desc: 'Strategi, tujuan, dan struktur organisasi',
-		items: [
-			{
-				n: 3,
-				href: `${base}/rangkuman#t3`,
-				label: 'Perencanaan Organisasi',
-				desc: 'Strategis, taktis, operasional &amp; MBO',
-			},
-			{
-				n: 4,
-				href: `${base}/rangkuman#t4`,
-				label: 'Pengorganisasian &amp; Struktur',
-				desc: 'Fungsional, divisional, matriks, komite',
-			},
-		],
-	},
-	{
-		roman: 'III',
-		ch: 3,
-		title: 'Kepemimpinan',
-		desc: 'Gaya dan teori kepemimpinan',
-		items: [
-			{
-				n: 5,
-				href: `${base}/rangkuman#t5`,
-				label: 'Kepemimpinan',
-				desc: 'Definisi, perspektif, kepemimpinan strategis',
-			},
-			{
-				n: 6,
-				href: `${base}/rangkuman#t6`,
-				label: 'Gaya Otoriter',
-				desc: 'Authoritarian leadership',
-			},
-			{
-				n: 7,
-				href: `${base}/rangkuman#t7`,
-				label: 'Gaya Demokratis',
-				desc: 'Partisipatif &amp; transformational',
-			},
-			{
-				n: 8,
-				href: `${base}/rangkuman#t8`,
-				label: 'Gaya Laissez-Faire',
-				desc: 'Kepemimpinan bebas',
-			},
-			{
-				n: 9,
-				href: `${base}/rangkuman#t9`,
-				label: 'Teori Kontingensi Hersey-Blanchard',
-				desc: 'Path-Goal, Fiedler, LMX, Vroom-Yetton',
-			},
-		],
-	},
-	{
-		roman: 'IV',
-		ch: 4,
-		title: 'Wirausaha',
-		desc: 'Karakter dan kebiasaan wirausaha',
-		items: [
-			{
-				n: 10,
-				href: `${base}/rangkuman#t10`,
-				label: 'Karakter Wirausaha',
-				desc: '9 karakter &amp; paradigma',
-			},
-			{
-				n: 11,
-				href: `${base}/rangkuman#t11`,
-				label: '7 Kebiasaan Efektif',
-				desc: 'Stephen R. Covey',
-			},
-			{
-				n: 12,
-				href: `${base}/rangkuman#t12`,
-				label: 'Karakter DISC',
-				desc: 'Tipe D, I, S, C &amp; tes DISC',
-			},
-		],
-	},
-	{
-		roman: 'V',
-		ch: 5,
-		title: 'Ide & Pengembangan Bisnis',
-		desc: 'Dari gagasan sampai model bisnis',
-		items: [
-			{
-				n: 13,
-				href: `${base}/rangkuman#t13`,
-				label: 'Gagasan Usaha',
-				desc: '4 tahap &amp; sumber gagasan',
-			},
-			{
-				n: 14,
-				href: `${base}/rangkuman#t14`,
-				label: 'Metode ATM &amp; SWOT',
-				desc: 'Amati, Tiru, Modifikasi',
-			},
-			{
-				n: 15,
-				href: `${base}/rangkuman#t15`,
-				label: 'Business Model Canvas',
-				desc: '9 komponen &amp; value proposition',
-			},
-			{
-				n: 16,
-				href: `${base}/rangkuman#t16`,
-				label: 'Masalah &amp; Hambatan Bisnis',
-				desc: '10 masalah + solusi',
-			},
-		],
-	},
-];
+const pakets = new Set(latihanSoal.map((s) => s.paket)).size;
 ---
 
 <Layout title="Persiapan UTS — Manajemen Bisnis" active="home">
 	<header class="hero">
 		<div class="wrap">
-			<h1>Persiapan UTS — Manajemen Bisnis</h1>
-			<p>
-				Rangkuman lengkap dari seluruh materi kuliah, quote para tokoh, jawaban soal
-				UTS, plus paket latihan soal serupa dengan kunci jawaban.
+			<span class="hero-kicker">Modul Belajar · Manajemen Bisnis</span>
+			<h1>Persiapan UTS Manajemen Bisnis</h1>
+			<p class="lead">
+				Rangkuman 19 file materi kuliah, quote tokoh, jawaban Soal UTS, dan latihan soal —
+				disusun rapi, satu topik satu halaman, plus Mode Kilat buat latihan cepat.
 			</p>
+			<div class="hero-cta">
+				<a class="btn btn-solid" href={`${base}/rangkuman`}>Buka Rangkuman</a>
+				<a class="btn btn-ghost" href={`${base}/latihan`}>Latihan Soal</a>
+			</div>
 			<div class="badges">
-				<span>19 File Materi</span>
-				<span>16 Topik Rangkuman</span>
-				<span>25+ Quote Tokoh</span>
-				<span>8 Soal UTS Terjawab</span>
-				<span>12 Soal Latihan</span>
+				<span>{topics.length} Topik Rangkuman</span>
+				<span>{soalUts.length} Jawaban Soal UTS</span>
+				<span>{latihanSoal.length} Latihan Soal · {pakets} Paket</span>
+				<span>Mode Terang &amp; Gelap</span>
 			</div>
 		</div>
 	</header>
 
-	<section id="daftar">
-		<div class="wrap">
-			<div class="sec-title" style="--ch: var(--brand);">
-				<span class="num">☰</span>
-				<div>
-					<h2>Daftar Isi</h2>
-				</div>
-			</div>
-			<p class="sec-sub">16 topik, dikelompokkan ke dalam 5 bagian materi</p>
-
-			{
-				groups.map((g) => (
-					<div class="group" style={`--ch: var(--ch${g.ch});`}>
-						<div class="group-head">
-							<span class="group-chip">Bagian {g.roman}</span>
-							<div>
-								<h3>{g.title}</h3>
-								<p>{g.desc}</p>
-							</div>
-						</div>
-						<div class="toc-grid">
-							{g.items.map((it) => (
-								<a class="toc-card" href={it.href}>
-									<span class="toc-n">{it.n}</span>
-									<span class="toc-body">
-										<b set:html={it.label} />
-										<small set:html={it.desc} />
-									</span>
-								</a>
-							))}
-						</div>
-					</div>
-				))
-			}
-
-			<div class="group" style="--ch: var(--brand);">
-				<div class="group-head">
-					<span class="group-chip">Latihan</span>
-					<div>
-						<h3>Uji Pemahaman</h3>
-						<p>Jawaban lengkap + mode kilat interaktif</p>
-					</div>
-				</div>
-				<div class="quick-links">
-					<a class="quick-card" href={`${base}/soal-uts`}>
-						<span class="toc-n">🎓</span>
-						<span class="toc-body">
-							<b>Jawaban Soal UTS</b>
-							<small>8 soal (4 bagian a &amp; b) terjawab lengkap</small>
-						</span>
-					</a>
-					<a class="quick-card" href={`${base}/latihan`}>
-						<span class="toc-n">📝</span>
-						<span class="toc-body">
-							<b>Latihan Soal</b>
-							<small>12 soal serupa + kunci jawaban</small>
-						</span>
-					</a>
-				</div>
-			</div>
+	<div class="wrap page-body">
+		<div class="sec-title">
+			<h2>Daftar Materi</h2>
+			<span class="sec-hint">5 bagian · {topics.length} topik — klik untuk mulai membaca</span>
 		</div>
-	</section>
+		<p class="note">
+			Mau cepat? Tekan <b>Ctrl + K</b> atau tombol <b>Cari</b> di atas — bisa cari dari judul
+			maupun isi materi.
+		</p>
+		<Syllabus base={base} />
+
+		<div class="sec-title">
+			<h2>Latihan &amp; Ujian</h2>
+			<span class="sec-hint">Mode Kilat + kunci jawaban lengkap</span>
+		</div>
+		<div class="quick-grid">
+			<a class="quick-card" href={`${base}/soal-uts`}>
+				<span class="quick-num">{soalUts.length}</span>
+				<span class="quick-body">
+					<b>Jawaban Soal UTS</b>
+					<small>Semua soal UTS dijawab lengkap per poin — bisa dibaca santai atau diuji lewat Mode Kilat.</small>
+				</span>
+			</a>
+			<a class="quick-card" href={`${base}/latihan`}>
+				<span class="quick-num">{latihanSoal.length}</span>
+				<span class="quick-body">
+					<b>Latihan Soal</b>
+					<small>{latihanSoal.length} soal dalam {pakets} paket — kerjakan dulu, buka kunci jawabannya sesudahnya.</small>
+				</span>
+			</a>
+		</div>
+	</div>
 </Layout>
