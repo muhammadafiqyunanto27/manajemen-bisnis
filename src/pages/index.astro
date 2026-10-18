@@ -4,9 +4,11 @@ import Syllabus from '../components/Syllabus.astro';
 import { topics } from '../data/topics';
 import { soalUts } from '../data/soalUts';
 import { latihanSoal } from '../data/latihanSoal';
+import { intisari, kutipan } from '../data/intisari';
 
 const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 const pakets = new Set(latihanSoal.map((s) => s.paket)).size;
+const poinCount = intisari.reduce((s, t) => s + t.poin.length, 0);
 ---
 
 <Layout title="Persiapan UTS — Manajemen Bisnis" active="home">
@@ -26,6 +28,7 @@ const pakets = new Set(latihanSoal.map((s) => s.paket)).size;
 				<span>{topics.length} Topik Rangkuman</span>
 				<span>{soalUts.length} Jawaban Soal UTS</span>
 				<span>{latihanSoal.length} Latihan Soal · {pakets} Paket</span>
+				<span>{kutipan.length} Kutipan Tokoh</span>
 				<span>Mode Terang &amp; Gelap</span>
 			</div>
 		</div>
@@ -43,10 +46,17 @@ const pakets = new Set(latihanSoal.map((s) => s.paket)).size;
 		<Syllabus base={base} />
 
 		<div class="sec-title">
-			<h2>Latihan &amp; Ujian</h2>
-			<span class="sec-hint">Mode Kilat + kunci jawaban lengkap</span>
+			<h2>Intisari &amp; Latihan</h2>
+			<span class="sec-hint">Poin hafalan + Mode Kilat + kunci jawaban lengkap</span>
 		</div>
 		<div class="quick-grid">
+			<a class="quick-card" href={`${base}/intisari`}>
+				<span class="quick-num">{poinCount}</span>
+				<span class="quick-body">
+					<b>Intisari &amp; Hafalan</b>
+					<small>{poinCount} poin inti dari {topics.length} topik + {kutipan.length} kutipan tokoh — versi paling ringkas buat hafalan cepat.</small>
+				</span>
+			</a>
 			<a class="quick-card" href={`${base}/soal-uts`}>
 				<span class="quick-num">{soalUts.length}</span>
 				<span class="quick-body">

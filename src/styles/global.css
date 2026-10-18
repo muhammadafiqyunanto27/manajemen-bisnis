@@ -1063,6 +1063,129 @@ a.quick-card :focus-visible {
 	vertical-align: 2px;
 }
 
+/* ---------- INTISARI & HAFALAN ---------- */
+.inti-jump {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 12px;
+}
+.inti-jump a {
+	font: 700 12.5px/1.5 var(--sans);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	padding: 5px 12px;
+	border: 1px solid var(--border-strong);
+	border-radius: 999px;
+	color: var(--ink);
+	text-decoration: none;
+	transition: background 0.18s ease, color 0.18s ease;
+}
+.inti-jump a:hover,
+.inti-jump a:focus-visible {
+	background: var(--inverse);
+	color: var(--on-inverse);
+	border-color: var(--inverse);
+}
+.inti-group {
+	scroll-margin-top: 84px; /* ruang untuk topbar sticky saat lompat anchor */
+}
+.inti-ghead {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 10px 12px;
+	margin: 36px 0 14px;
+	padding-bottom: 10px;
+	border-bottom: 1.5px solid var(--ink);
+}
+.inti-ghead h2 {
+	font-size: 22px;
+	margin: 0;
+}
+.inti-ghead .sec-hint {
+	margin-left: auto;
+}
+.inti-group:first-of-type .inti-ghead {
+	margin-top: 4px;
+}
+.inti-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+	gap: 14px;
+	margin-bottom: 16px;
+}
+.card.inti {
+	padding: 16px 18px;
+	margin-bottom: 0;
+}
+.card.inti h3 {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+.card.inti .tag {
+	flex-shrink: 0;
+}
+.card ul.inti-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 7px;
+}
+.card ul.inti-list li {
+	position: relative;
+	margin: 0;
+	padding-left: 18px;
+	font-size: 14.5px;
+	line-height: 1.55;
+}
+.card ul.inti-list li::before {
+	content: '';
+	position: absolute;
+	left: 2px;
+	top: 0.56em;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var(--ink);
+}
+.card ul.inti-list strong {
+	font-weight: 700;
+}
+.kutipan-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+	gap: 14px;
+}
+.kcard {
+	margin: 0;
+	padding: 16px 18px;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--r-md);
+	box-shadow: var(--shadow-sm);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	overflow-wrap: anywhere;
+}
+.kcard .tag {
+	align-self: flex-start;
+}
+.kcard blockquote {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font: italic 400 15px/1.6 var(--sans);
+}
+.kcard figcaption {
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	color: var(--muted);
+}
+
 /* ---------- QUOTE ---------- */
 blockquote {
 	margin: 14px 0;
@@ -1566,9 +1689,14 @@ footer p + p {
 	.card,
 	.answer,
 	.qbox,
-	.syl-chapter {
+	.syl-chapter,
+	.card.inti,
+	.kcard {
 		break-inside: avoid;
 		box-shadow: none;
+	}
+	.inti-jump {
+		display: none;
 	}
 	.label,
 	.tag,

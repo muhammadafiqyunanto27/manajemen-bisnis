@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { topics, chapters } from '../data/topics';
 import { soalUts } from '../data/soalUts';
 import { latihanSoal } from '../data/latihanSoal';
+import { intisari, kutipan } from '../data/intisari';
 
 export const GET: APIRoute = () => {
 	const records = [
@@ -29,6 +30,18 @@ export const GET: APIRoute = () => {
 			meta: s.paketTitle,
 			text: s.text,
 		})),
+		{
+			kind: 'Intisari',
+			url: 'intisari',
+			title: 'Intisari & Hafalan',
+			meta: 'Poin hafalan semua topik + kutipan tokoh',
+			text:
+				intisari
+					.map((t) => `${t.judul}: ${t.poin.join(' ').replace(/<[^>]+>/g, '')}`)
+					.join(' ') +
+				' ' +
+				kutipan.map((k) => `${k.siapa}: ${k.teks}`).join(' '),
+		},
 	];
 	return new Response(JSON.stringify(records), {
 		headers: { 'Content-Type': 'application/json; charset=utf-8' },

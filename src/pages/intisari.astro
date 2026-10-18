@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { topics, chapters } from '../data/topics';
+import { intisari, kutipan } from '../data/intisari';
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const poinCount = intisari.reduce((s, t) => s + t.poin.length, 0);
+const chapOf = new Map(topics.map((t) => [t.n, t.chapter]));
+const groups = chapters
+	.map((c) => ({ ...c, items: intisari.filter((t) => chapOf.get(t.n) === c.n) }))
+	.filter((g) => g.items.length > 0);
+const judulTopik = new Map(topics.map((t) => [t.n, t.title]));
+---
+
+<Layout
+	title="Intisari & Hafalan — Persiapan UTS Manajemen Bisnis"
+	description="Intisari seluruh materi Manajemen Bisnis: poin hafalan ringkas per topik plus kutipan tokoh."
+	active="intisari"
+	crumb="Intisari · Poin Hafalan"
+	heading="Intisari & Hafalan"
+	subheading={`${intisari.length} topik → ${poinCount} poin inti + ${kutipan.length} kutipan tokoh. Versi paling ringkas dari seluruh rangkuman.`}
+>
+	<div class="wrap page-body">
+		<div class="inti-jump">
+			{groups.map((g) => <a href={`#bagian-${g.n}`}>Bagian {g.roman}</a>)}
+			<a href="#kutipan">Kutipan Tokoh</a>
+		</div>
+		<p class="note">
+			Cara pakai: baca tiap poin dengan suara keras, tutup layarnya, lalu ulangi dari
+			ingatan. <b>Kata tebal</b> = kunci yang wajib hafal.
+		</p>
+
+		{
+			groups.map((g) => (
+				<section class="inti-group" id={`bagian-${g.n}`}>
+					<div class="inti-ghead">
+						<span class="tag">Bagian {g.roman}</span>
+						<h2>{g.title}</h2>
+						<span class="sec-hint">{g.items.length} topik</span>
+					</div>
+					<div class="inti-grid">
+						{g.items.map((t) => (
+							<article class="card inti">
+								<h3>
+									<span class="tag inti-n">{t.n}</span>
+									{t.judul}
+								</h3>
+								<ul class="inti-list">
+									{t.poin.map((p) => (
+										<li set:html={p} />
+									))}
+								</ul>
+							</article>
+						))}
+					</div>
+				</section>
+			))
+		}
+
+		<section class="inti-group" id="kutipan">
+			<div class="inti-ghead">
+				<span class="tag">Kutipan</span>
+				<h2>Kutipan Tokoh untuk Dihafal</h2>
+				<span class="sec-hint">{kutipan.length} kutipan</span>
+			</div>
+			<div class="kutipan-grid">
+				{
+					kutipan.map((k) => (
+						<figure class="kcard">
+							<span class="tag">{k.siapa}</span>
+							<blockquote>{k.teks}</blockquote>
+							<figcaption>
+								Topik {k.topik} · {judulTopik.get(k.topik)}
+							</figcaption>
+						</figure>
+					))
+				}
+			</div>
+		</section>
+
+		<p class="note">
+			Hafalan kelar? Tes lewat <a href={`${base}/latihan`}>Latihan Soal</a>, atau tekan
+			<b>Ctrl + K</b> untuk mencari kata tertentu di seluruh materi.
+		</p>
+	</div>
+</Layout>
