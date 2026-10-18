@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+	heading?: string;
+	subheading?: string;
+}
+
+const {
+	title,
+	description = 'Persiapan UTS Manajemen Bisnis — rangkuman 19 file materi kuliah, quote tokoh, jawaban soal UTS, dan latihan soal.',
+	heading,
+	subheading,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>"
+		/>
+		<title>{title}</title>
+	</head>
+	<body>
+		<nav>
+			<div class="wrap">
+				<a href={base}>Beranda</a>
+				<a href={`${base}/rangkuman`}>Rangkuman</a>
+				<a href={`${base}/soal-uts`}>Jawaban Soal UTS</a>
+				<a href={`${base}/latihan`}>Latihan Soal</a>
+			</div>
+		</nav>
+
+		{
+			heading && (
+				<header class="page-hero">
+					<div class="wrap">
+						<h1>{heading}</h1>
+						{subheading && <p>{subheading}</p>}
+					</div>
+				</header>
+			)
+		}
+
+		<slot />
+
+		<footer>
+			<div class="wrap">
+				<p>
+					<b>Persiapan UTS — Manajemen Bisnis</b><br />
+					Disusun dari 19 file materi kuliah • Dosen pengampu: Moh Haris, SE, M.Si<br />
+					Rangkuman + Quote Tokoh + Jawaban Soal UTS + Latihan Soal
+				</p>
+				<p style="margin-top:10px;opacity:.7">
+					Dibuat dengan Astro + React — gunakan untuk belajar, bukan menyalin buta. Selamat belajar! 🎓
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

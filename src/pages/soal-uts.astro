@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+import QuizKilat from '../components/QuizKilat.tsx';
+
+const soalUts = [
+	{
+		"label": "Soal 1 — a",
+		"q": "<p>Jelaskan komponen utama dalam konsep bisnis! Apa saja jenis bisnis itu?</p>",
+		"a": "<p><b>Komponen Utama Konsep Bisnis</b> — sebuah usaha bisa berjalan baik jika memiliki empat komponen utama:</p>\n<ol>\n<li><b>Strategi Inti (core strategy)</b> — visi dan misi bisnis, meliputi hal yang diharapkan dari bisnis yang bersifat ideal (arah, tujuan, dan posisi yang hendak dicapai).</li>\n<li><b>Sumber Daya Strategis (strategic resources)</b> — terdiri dari kompetensi inti, aset strategis, dan proses utama; mencakup modal, SDM, teknologi, serta kemampuan unik yang menjadi kekuatan persaingan perusahaan.</li>\n<li><b>Perantara Pelanggan (customer interface)</b> — dukungan dan pemenuhan, informasi yang mendalam, dinamika hubungan, dan struktur harga; cara perusahaan berinteraksi, melayani, dan mempertahankan pelanggan.</li>\n<li><b>Jaringan Nilai (value network)</b> — jaringan nilai di sekitar perusahaan (mitra, pemasok, aliansi) yang memperkuat dan melengkapi sumber daya yang dimiliki perusahaan.</li>\n</ol>\n<p><b>Jenis-Jenis Bisnis:</b></p>\n<p>Berdasarkan aktivitasnya: ① <b>Bisnis Ekstraktif</b> — pertambangan/penggalian barang tambang (batu bara, minyak, emas). ② <b>Bisnis Manufaktur</b> — produksi, mengubah bahan mentah menjadi barang jadi. ③ <b>Bisnis Jasa</b> — penyediaan layanan (konsultan, salon, rumah sakit).</p>\n<p>Berdasarkan cara berjualan &amp; model: ④ <b>E-Commerce</b> — penjualan online via platform elektronik. ⑤ <b>Retail/Ritel</b> — penjualan langsung ke konsumen akhir (supermarket, toko pakaian). ⑥ <b>Franchise/Waralaba</b> — pemberian lisensi merek, produk, dan sistem ke pihak ketiga (McDonald's, KFC). ⑦ <b>Startup</b> — bisnis baru yang berfokus pada inovasi produk/layanan berpotensi tumbuh pesat.</p>"
+	},
+	{
+		"label": "Soal 1 — b",
+		"q": "<p>Sebutkan dan jelaskan komponen lingkungan bisnis! Jelaskan lingkungan eksternal mikro dan makro!</p>",
+		"a": "<p><b>Komponen Lingkungan Bisnis</b> terdiri dari lingkungan internal dan lingkungan eksternal.</p>\n<p><b>A. Lingkungan Internal</b> (komponen di dalam perusahaan): ① Sistem nilai (pemilihan bisnis, misi, visi, kebijakan &amp; praktik). ② Misi, visi &amp; tujuan. ③ Struktur &amp; sifat kepengurusan (dewan direksi, manajer). ④ Hubungan kekuatan internal (koordinasi timbal balik antar tingkatan). ⑤ Sumber daya manusia (komponen kunci: keterampilan, komitmen, sikap). ⑥ Citra perusahaan &amp; ekuitas merek. ⑦ Faktor lain: aset &amp; fasilitas fisik, R&amp;D, sumber daya pemasaran, faktor keuangan.</p>\n<p><b>B. Lingkungan Eksternal Mikro</b> — elemen yang berinteraksi langsung dengan perusahaan:</p>\n<ol>\n<li><b>Pelanggan</b> — elemen terpenting; tujuan utama bisnis adalah menarik &amp; mempertahankan pelanggan.</li>\n<li><b>Pemasok</b> — pemasok bahan baku, komponen &amp; mesin; harus dapat dipercaya &amp; ramah.</li>\n<li><b>Perantara pemasaran</b> — mediator antara produsen &amp; konsumen akhir.</li>\n<li><b>Pesaing</b> — organisasi yang memproduksi produk serupa &amp; berebut pangsa pasar.</li>\n<li><b>Masyarakat umum</b> — respon masyarakat memengaruhi citra, penjualan &amp; pendapatan.</li>\n</ol>\n<p><b>C. Lingkungan Eksternal Makro</b> — faktor luas di luar kendali perusahaan:</p>\n<ol>\n<li><b>Politik</b> — pemerintah, lembaga politik, kebijakan &amp; legislasi (pajak, kontrak pemerintah).</li>\n<li><b>Ekonomi</b> — tingkat ekonomi, pengangguran, nilai tukar asing, inflasi &amp; deflasi.</li>\n<li><b>Sosial</b> — adat, nilai masyarakat, perubahan selera, standar hidup, pendidikan.</li>\n<li><b>Teknologi</b> — peralatan, teknologi &amp; teknik produksi yang ditingkatkan.</li>\n<li><b>Fisik</b> — bencana alam &amp; perubahan lingkungan yang memengaruhi produksi/pasokan.</li>\n<li><b>Hukum</b> — peraturan yang wajib dipatuhi (UU Merek Dagang, Komoditas Esensial, dll).</li>\n<li><b>Internasional</b> — sistem hukum/politik lintas negara, kebijakan ekonomi, budaya, tarif, perjanjian perdagangan.</li>\n</ol>"
+	},
+	{
+		"label": "Soal 2 — a",
+		"q": "<p>Dalam manajemen bisnis ada perencanaan strategis, apa saja isi perencanaan strategis? Mengapa perencanaan itu penting dalam bisnis?</p>",
+		"a": "<p><b>Isi Perencanaan Strategis</b> — strategi adalah \"penetapan tujuan jangka panjang yang mendasar dari suatu organisasi, dan pemilihan alternatif tindakan serta alokasi sumber daya untuk mencapainya\". Isi/proses perencanaan strategis meliputi:</p>\n<ol>\n<li><b>Formulasi Misi dan Tujuan</b> — berfokus pada pasar, dapat dicapai, dapat memotivasi, dan spesifik.</li>\n<li><b>Analisis Tujuan dan Strategi Saat Ini</b> — evaluasi apakah tujuan &amp; strategi yang berjalan sudah sesuai seharusnya.</li>\n<li><b>Analisis Lingkungan</b> — mengidentifikasi perubahan lingkungan &amp; kesempatan strategis yang bisa dimanfaatkan.</li>\n<li><b>Analisis Sumber Daya</b> — melihat kekuatan sumber daya organisasi relatif terhadap pesaing.</li>\n<li><b>Identifikasi Kesempatan Strategis</b> — muncul bila ada <i>gap</i> antara hasil strategi saat ini dengan hasil bila strategi lain (yang seharusnya) digunakan.</li>\n<li><b>Pengambilan Keputusan Strategis</b> — mengembangkan &amp; memilih alternatif keputusan terbaik.</li>\n<li><b>Pelaksanaan Strategi</b> — menjalankan alternatif terbaik untuk mencapai tujuan.</li>\n<li><b>Evaluasi dan Pengendalian Strategis</b> — memastikan pelaksanaan sesuai rencana &amp; mencapai tujuan yang diinginkan.</li>\n</ol>\n<p>(Ditambah 3 tingkatan strategi: korporasi — pasar mana yang dimasuki; unit bisnis — bagaimana bersaing; fungsional — menjalankan tiap fungsi.)</p>\n<p><b>Mengapa Perencanaan Penting:</b></p>\n<ol>\n<li><b>Memberi arah</b> — manajer &amp; karyawan tahu kemana organisasi menuju sehingga kegiatan dapat dikoordinasikan.</li>\n<li><b>Mengurangi ketidakpastian</b> — mendorong melihat ke depan, mengantisipasi perubahan, dan menyusun tanggapan yang tepat.</li>\n<li><b>Mengurangi kegiatan tumpang tindih</b> — ketidakefisienan menjadi jelas dan mudah dikoreksi.</li>\n<li><b>Menentukan standar untuk pengendalian</b> — kinerja aktual dapat dibandingkan dengan sasaran; penyimpangan teridentifikasi &amp; tindakan koreksi diambil.</li>\n</ol>\n<p>Selain itu perencanaan menghasilkan <b>\"protective benefits\"</b> (mengurangi kesalahan pengambilan keputusan) dan <b>\"positive benefits\"</b> (meningkatkan sukses pencapaian tujuan organisasi). Sesuai kata Abraham Lincoln: <i>\"Give me six hours to cut down a tree and I will spend the first four sharpening the axe.\"</i></p>"
+	},
+	{
+		"label": "Soal 2 — b",
+		"q": "<p>Jelaskan Gaya Kepemimpinan Kontingensi menurut Hersey and Blanchard!</p>",
+		"a": "<p><b>Gaya Kepemimpinan Situasional (Contingency) menurut Hersey &amp; Blanchard</b> (dalam Veithzal Rivai, 2014) adalah gaya kepemimpinan di mana <b>pemimpin/manajer harus menyesuaikan responnya menurut kondisi atau tingkat perkembangan kematangan, kemampuan, dan minat karyawan</b> dalam menyelesaikan tugas-tugasnya. Tidak ada gaya yang optimal untuk semua situasi — gaya yang tepat bergantung pada tingkat kesiapan/kematangan bawahan.</p>\n<p><b>Asumsi dasar:</b> perilaku kepemimpinan merupakan kombinasi tiga dimensi: ① banyaknya <b>pengarahan</b> yang diberikan, ② banyaknya <b>dukungan</b> yang diberikan, ③ <b>tingkat kematangan bawahan</b> (kombinasi kemauan &amp; kemampuan).</p>\n<p><b>4 Gaya Kepemimpinan:</b></p>\n<ol>\n<li><b>S1: Telling (Pemberitahu)</b> — Pengarahan Tinggi, Dukungan Rendah. Komunikasi satu arah; pemimpin memberitahu apa, bagaimana, mengapa, kapan &amp; dimana pekerjaan dilaksanakan; instruksi jelas &amp; pengawasan langsung. <b>Sesuai untuk kesiapan rendah (R1)</b> — pengikut tidak mampu &amp; tidak mau (K1).</li>\n<li><b>S2: Selling (Penjual)</b> — Pengarahan Tinggi, Dukungan Tinggi. Masih memberi arahan tetapi dengan komunikasi dua arah &amp; dukungan emosional untuk memotivasi &amp; membangun percaya diri. <b>Sesuai untuk kesiapan moderat (R2)</b> — mau tetapi tidak mampu (K2).</li>\n<li><b>S3: Participating (Partisipatif)</b> — Pengarahan Rendah, Dukungan Tinggi. Mendorong saling berbagi gagasan &amp; memfasilitasi; pemimpin menjadi pendengar yang baik &amp; memelihara hubungan. <b>Sesuai untuk kesiapan tinggi dengan motivasi moderat (R3)</b> — mampu tetapi tidak mau (K3).</li>\n<li><b>S4: Delegating (Pendelegasian)</b> — Pengarahan Rendah, Dukungan Rendah. Mengalihkan tanggung jawab keputusan &amp; pelaksanaan kepada pengikut; pemimpin hanya memonitor. <b>Sesuai untuk kesiapan tinggi (R4)</b> — mampu &amp; mau (K4).</li>\n</ol>\n<p><b>4 Tingkat Kesiapan Pengikut (Follower Readiness):</b> R1 = tidak mampu &amp; tidak mau (tidak kompeten &amp; tidak percaya diri) • R2 = tidak mampu tetapi sudah punya kemauan • R3 = memiliki pengetahuan &amp; keterampilan memadai tetapi tidak mau melaksanakan • R4 = memiliki pengetahuan, keterampilan &amp; kemauan kuat. Pemimpin yang efektif menggunakan tingkat perilaku kerja yang tinggi di sejumlah situasi dan hanya sekedarnya di situasi lain — gaya kepemimpinan \"melipat\" mengikuti kesiapan pengikut (R1→S1, R2→S2, R3→S3, R4→S4).</p>"
+	},
+	{
+		"label": "Soal 3 — a",
+		"q": "<p>Jelaskan karakter wirausaha yang sangat penting dalam mengelola bisnis! Mengapa demikian?</p>",
+		"a": "<p><b>Karakter</b> adalah tatanan nilai permanen dalam diri seseorang yang ditunjukkan secara konsisten dalam kehidupan sehari-hari — cara berpikir &amp; berperilaku yang menjadi ciri khas (KBBI; Ditjen Mandikdasmen). Karakter wirausaha yang sangat penting dalam mengelola bisnis:</p>\n<ol>\n<li><b>Keberanian mengambil risiko</b> — bisnis selalu mengandung ketidakpastian; tanpa keberanian, peluang takkan pernah dijawab. <i>(Mengapa: peluang usaha hanya untuk yang berani memulai.)</i></li>\n<li><b>Pekerja keras</b> — mengelola bisnis menuntut kerja nyata yang konsisten, bukan sekadar rencana di atas kertas.</li>\n<li><b>Komitmen yang tinggi terhadap pekerjaan</b> — komitmen menjaga konsistensi sampai tujuan tercapai meski rintangan datang.</li>\n<li><b>Jiwa bertanggung jawab terhadap setiap keputusan</b> — pengelola bisnis harus siap mempertanggungjawabkan setiap akibat dari keputusannya, termasuk kepada karyawan &amp; pelanggan.</li>\n<li><b>Berpikir kreatif dan inovatif</b> — lingkungan bisnis yang kompleks &amp; dinamis menuntut solusi baru agar tetap kompetitif (tanpa inovasi, bisnis kehilangan daya saing).</li>\n<li><b>Menyukai tantangan dan selalu berusaha maju</b> — tumbuh di zona perjuangan membuat bisnis terus berkembang.</li>\n<li><b>Pantang menyerah</b> — \"setiap kegagalan adalah jalan yang lebih dekat ke arah keberhasilan\"; kegagalan adalah bagian dari proses belajar.</li>\n<li><b>Cepat beradaptasi</b> — sifat lingkungan bisnis yang dinamis menuntut kemampuan menyesuaikan diri dengan cepat.</li>\n<li><b>Mudah meyakinkan orang</b> — penting untuk menjual gagasan, produk &amp; jasa; membangun jaringan, menarik mitra, pelanggan, dan investor.</li>\n</ol>\n<p><b>Mengapa demikian?</b> Karena karakter adalah nilai yang permanen &amp; konsisten — bukan sekadar keterampilan teknis yang bisa dipelajari sebentar. Karakter membentuk cara pengambilan keputusan, kualitas hubungan dengan mitra/karyawan/pelanggan, dan kepercayaan (kepercayaan adalah modal mahal dalam bisnis). Karakter wirausaha dibentuk melalui <b>paradigma yang benar</b> (paradigma diri sendiri, orang lain &amp; kehidupan berbasis nilai-nilai prinsip) dan <b>prinsip melangkah seperti bayi</b> — mempraktikkan nilai setahap demi setahap sampai menjadi kebiasaan dan akhirnya karakter.</p>"
+	},
+	{
+		"label": "Soal 3 — b",
+		"q": "<p>Jelaskan 7 kebiasaan efektif yang dapat menjadi panduan bagi seseorang agar punya karakter pribadi yang kuat!</p>",
+		"a": "<p>Menurut <b>Stephen R. Covey</b>, 7 kebiasaan efektif yang harus diterapkan dalam kehidupan sehari-hari:</p>\n<ol>\n<li><b>Berpikir Proaktif</b> — setiap peristiwa (baik/buruk) bergantung pada sikap kita terhadapnya. Berpikir proaktif = mengambil tindakan lebih positif dari peristiwa yang tidak menguntungkan; berpikir &amp; berbuat berdasarkan nilai; berpikir sebelum bertindak; menyadari <b>tidak ada yang bisa dikendalikan pada orang lain kecuali mengendalikan diri sendiri</b>. Kelebihan: tidak mudah tersinggung, bertanggung jawab atas pilihan, cepat pulih, fokus pada hal yang bisa diubah. (Lawannya: reaktif — mudah tersinggung, menyalahkan orang lain, banyak mengeluh.)</li>\n<li><b>Merujuk pada Tujuan Akhir</b> — tahu &amp; paham dari mana berasal, untuk apa ada, kemana menuju. Menyatakan visi &amp; misi kehidupan dengan tegas; cita-cita diwujudkan dengan komitmen kuat. \"Diri sendirilah yang memimpin kehidupan, bukan kehidupan yang memimpin diri sendiri. Hidup merupakan <i>problem of choice</i>.\" Proses penetapan visi-misi: duplikasi, imitasi, personifikasi &amp; identifikasi orang yang diidolakan.</li>\n<li><b>Dahulukan yang Utama</b> — memilih aktivitas yang berdampak besar di masa depan. Ada 4 kuadran orang: suka menunda (tenang di awal, tertekan saat masalah menumpuk), <i>yes-man</i> (sulit menolak, mengabaikan tugas), pemalas (membuang waktu &amp; uang), dan <b>menentukan prioritas</b> (teliti, penuh perhitungan, mengalokasikan sumber daya dengan matang).</li>\n<li><b>Berpikir Menang-Menang</b> — membuat kehidupan baik bagi semua orang. 4 cara berpikir: menang-kalah (rakus, menghalalkan segala cara), kalah-menang (tidak percaya diri, tidak mau mencoba), kalah-kalah (\"kalau saya tidak dapat, dia juga tidak boleh dapat\"), dan <b>menang-menang</b>: \"Saya menang, yang lain tidak kalah\", \"menang tanpo ngasorake\" (tanpa mempermalukan lawan), \"nglurug tanpa bala\" (dengan negosiasi &amp; diplomasi).</li>\n<li><b>Berusahalah Memahami Terlebih Dahulu, Baru Dipahami</b> — manusia fitrahnya ingin diperhatikan. Dengan mendengarkan dulu kita memberi empati &amp; perhatian tulus; orang merasa dihormati &amp; diakui. \"Bagaimana mungkin orang lain mau mendengarkan kita jika kita pun tidak pernah mau mendengarkan orang lain?\" Cara mendengar baik: perhatian melalui <i>body language</i>.</li>\n<li><b>Wujudkan Sinergi</b> — berbagi <i>resources</i> dengan fokus keunggulan masing-masing; saling menerima &amp; member. Ilustrasi: 4 orang bekerja sendiri = 1+1+1+1 = 4; bersinergi hasilnya = 1111 bahkan 4444. Tidak ada orang sempurna — semua punya keunggulan &amp; kelemahan.</li>\n<li><b>Asahlah Gergajimu (Renewal)</b> — potensi yang tidak diasah akan terabaikan. \"Batu sungai yang hitam tak bernilai — di tangan pemahat menjadi patung Ganesha yang mahal.\" Mengasah gergaji = mensyukuri karunia dengan mengoptimalkan apapun yang dimiliki. Semakin cepat mulai semakin baik karena umur ada batasnya; gelar/ijazah/status justru bisa menghambat bila menjadi hambatan mental.</li>\n</ol>\n<p>Kebiasaan 1–3 membangun <b>kemenangan pribadi</b>, kebiasaan 4–6 membangun <b>kemenangan bersama</b>, dan kebiasaan 7 adalah <b>pembaruan (renewal)</b> yang menjaga kebugaran seluruh kebiasaan — bersama-sama membentuk karakter pribadi yang kuat.</p>"
+	},
+	{
+		"label": "Soal 4 — a",
+		"q": "<p>Jelaskan urutan proses untuk mendapatkan gagasan produk untuk berwirausaha!</p>",
+		"a": "<p>Proses pencarian produk yang layak dijadikan awal gagasan usaha melalui <b>4 tahapan berurutan</b>:</p>\n<ol>\n<li><b>Tahap 1 — Merumuskan Kebutuhan</b><br>\nMenggunakan hirarki kebutuhan menurut <b>A.H. Maslow</b>: ① Kebutuhan fisiologis, ② Kebutuhan rasa aman &amp; cinta kasih, ③ Kebutuhan sosial, ④ Kebutuhan rasa harga diri, ⑤ Kebutuhan aktualisasi diri. Setiap tingkat kebutuhan melahirkan jenis usaha berbeda — misal: fisiologis → warung makan, toko sembako, kos-kosan; cinta kasih/aman → café, resto, perhotelan; sosial → podcast, EO; harga diri → perhiasan, dealer mobil mewah; aktualisasi diri → barang antik, lelang barang mewah.</li>\n<li><b>Tahap 2 — Menurunkan Kebutuhan menjadi Barang dan Jasa</b><br>\nKebutuhan yang kompleks, bertingkat &amp; unik diturunkan menjadi pilihan barang/jasa yang <b>layak dipasarkan</b>. Syarat utamanya: barang/jasa tersebut harus mempunyai <b>nilai ekonomi</b> — untuk mendapatkannya seseorang harus mengorbankan sejumlah uang. Barang yang belum bernilai ekonomi (udara, sinar matahari, tanah, air sungai) belum bisa menjadi produk usaha.</li>\n<li><b>Tahap 3 — Mengubah Kebutuhan menjadi Permintaan</b><br>\nProduk bernilai ekonomi diubah menjadi <b>permintaan</b> — sejumlah barang yang dibutuhkan konsumen untuk memenuhi kebutuhan. Permintaan dibedakan menjadi: <b>permintaan potensial</b> (belum dapat diukur kemampuan daya belinya) dan <b>permintaan riil/efektif</b> — permintaan yang diikuti <b>kemampuan membeli (<i>ability to pay</i>) dan kemauan membeli (<i>willing to pay</i>) konsumen.</b></li>\n<li><b>Tahap 4 — Mengukur Permintaan Riil ke dalam Rumusan Rencana Penjualan</b><br>\nDilakukan melalui <b>segmentasi pasar</b> — memilih secara spesifik jenis pasar &amp; karakteristik yang dilayani; memilah pasar heterogen menjadi beberapa kelompok pasar homogen (semakin banyak ukuran parameter, semakin spesifik) — dan <b>penempatan produk (positioning)</b>. Hasilnya berupa ukuran permintaan riil yang dirumuskan menjadi rencana penjualan.</li>\n</ol>"
+	},
+	{
+		"label": "Soal 4 — b",
+		"q": "<p>Jelaskan bagaimana metode ATM membimbing seseorang untuk dapat memulai berwirausaha? Apa saja yang perlu ditiru (T) dan yang perlu dimodifikasi (M)?</p>",
+		"a": "<p><b>Metode ATM</b> adalah singkatan dari <b>Amati, Tiru, Modifikasi</b> — perintah untuk mengamati usaha yang sudah ada, meniru usaha tersebut, lalu memodifikasinya. Metode ini <b>bukan plagiat/plagiarisme</b> karena di dalamnya terdapat kegiatan modifikasi yang jelas mencari kelemahan/kekurangan usaha sebelumnya, kemudian mengganti atau menambahkan sesuatu sehingga terbentuk usaha yang baru. Dengan demikian ATM membimbing pemula memulai wirausaha tanpa harus mulai dari nol — belajar dari bisnis yang sudah terbukti berjalan, lalu menyempurnakannya dengan ciri khas sendiri.</p>\n<p><b>5 Tahapan Metode ATM:</b> ① Mempelajari bisnis yang sudah ada → ② Mengkaji input dan output suatu bisnis → ③ Menganalisa tren populasi dan data demografi → ④ Mengkaji tren ekonomi → ⑤ Meniru dan memodifikasi 4P (<i>Place, Price, Product, Promotion</i>).</p>\n<p><b>Langkah AMATI:</b> mengamati jalannya bisnis pesaing — bukan sekadar melihat tapi <b>mempelajari</b> produk, strategi pemasaran, dll; menyimpulkan hasil pengamatan sebagai referensi. Mengamati seluk beluk bisnis pesaing adalah hal wajib agar tetap eksis.</p>\n<p><b>Yang perlu ditiru (T):</b></p>\n<ol>\n<li>Prinsip usaha</li>\n<li>Sistem manajemen</li>\n<li>Pola kerja</li>\n<li>Proses produksi</li>\n<li>Peralatan yang digunakan</li>\n<li>Strategi pemasaran</li>\n<li>Standar pelayanan</li>\n<li><i>Fighting spirit</i> (semangat juang)</li>\n<li>Mentalitas</li>\n</ol>\n<p><b>Yang perlu dimodifikasi (M):</b> jika hanya Amati &amp; Tiru, bisnis akan terlihat <b>membosankan, monoton &amp; tidak kreatif</b>. Harus diberi sentuhan yang berbeda agar jauh dari kesan meniru. Yang dimodifikasi adalah <b>karakter, sumber daya, gaya serta kondisi Anda sendiri</b> yang memberi warna &amp; sentuhan berbeda dari milik pesaing sehingga terkesan segar. Modifikasi dilakukan pada elemen <b>4P</b>: <b>Place</b> (tempat/lokasi/distribusi), <b>Price</b> (harga), <b>Product</b> (produk: fitur, kualitas, kemasan), dan <b>Promotion</b> (promosi). Pertanyaan pemandu: Apa yang diinginkan konsumen? Bagaimana cara memuaskan konsumen? Apakah cara terbaik untuk memuaskan konsumen? (Contoh hasil ATM: Bakso Geger Semarang.)</p>"
+	}
+];
+---
+
+<Layout
+	title="Jawaban Soal UTS — Persiapan UTS Manajemen Bisnis"
+	heading="Jawaban Soal UTS"
+	subheading="8 soal (4 bagian a & b) — dijawab lengkap berdasarkan materi kuliah"
+>
+	<section class="topic">
+		<div class="wrap">
+			<QuizKilat client:load soal={soalUts} />
+			<hr class="divider" />
+<div class="sec-title"><span class="num">🎓</span><h2>Jawaban Soal UTS</h2></div>
+<p class="sec-sub">8 soal (4 bagian) — dijawab lengkap berdasarkan materi kuliah</p>
+
+<div class="card accent-indigo">
+<div class="qbox"><div class="label">Soal 1 — a</div>
+<p>Jelaskan komponen utama dalam konsep bisnis! Apa saja jenis bisnis itu?</p></div>
+<div class="answer"><div class="label">Jawaban</div>
+<p><b>Komponen Utama Konsep Bisnis</b> — sebuah usaha bisa berjalan baik jika memiliki empat komponen utama:</p>
+<ol>
+<li><b>Strategi Inti (core strategy)</b> — visi dan misi bisnis, meliputi hal yang diharapkan dari bisnis yang bersifat ideal (arah, tujuan, dan posisi yang hendak dicapai).</li>
+<li><b>Sumber Daya Strategis (strategic resources)</b> — terdiri dari kompetensi inti, aset strategis, dan proses utama; mencakup modal, SDM, teknologi, serta kemampuan unik yang menjadi kekuatan persaingan perusahaan.</li>
+<li><b>Perantara Pelanggan (customer interface)</b> — dukungan dan pemenuhan, informasi yang mendalam, dinamika hubungan, dan struktur harga; cara perusahaan berinteraksi, melayani, dan mempertahankan pelanggan.</li>
+<li><b>Jaringan Nilai (value network)</b> — jaringan nilai di sekitar perusahaan (mitra, pemasok, aliansi) yang memperkuat dan melengkapi sumber daya yang dimiliki perusahaan.</li>
+</ol>
+<p><b>Jenis-Jenis Bisnis:</b></p>
+<p>Berdasarkan aktivitasnya: ① <b>Bisnis Ekstraktif</b> — pertambangan/penggalian barang tambang (batu bara, minyak, emas). ② <b>Bisnis Manufaktur</b> — produksi, mengubah bahan mentah menjadi barang jadi. ③ <b>Bisnis Jasa</b> — penyediaan layanan (konsultan, salon, rumah sakit).</p>
+<p>Berdasarkan cara berjualan &amp; model: ④ <b>E-Commerce</b> — penjualan online via platform elektronik. ⑤ <b>Retail/Ritel</b> — penjualan langsung ke konsumen akhir (supermarket, toko pakaian). ⑥ <b>Franchise/Waralaba</b> — pemberian lisensi merek, produk, dan sistem ke pihak ketiga (McDonald's, KFC). ⑦ <b>Startup</b> — bisnis baru yang berfokus pada inovasi produk/layanan berpotensi tumbuh pesat.</p>
+</div></div>
+
+<div class="card accent-orange">
+<div class="qbox"><div class="label">Soal 1 — b</div>
+<p>Sebutkan dan jelaskan komponen lingkungan bisnis! Jelaskan lingkungan eksternal mikro dan makro!</p></div>
+<div class="answer"><div class="label">Jawaban</div>
+<p><b>Komponen Lingkungan Bisnis</b> terdiri dari lingkungan internal dan lingkungan eksternal.</p>
+<p><b>A. Lingkungan Internal</b> (komponen di dalam perusahaan): ① Sistem nilai (pemilihan bisnis, misi, visi, kebijakan &amp; praktik). ② Misi, visi &amp; tujuan. ③ Struktur &amp; sifat kepengurusan (dewan direksi, manajer). ④ Hubungan kekuatan internal (koordinasi timbal balik antar tingkatan). ⑤ Sumber daya manusia (komponen kunci: keterampilan, komitmen, sikap). ⑥ Citra perusahaan &amp; ekuitas merek. ⑦ Faktor lain: aset &amp; fasilitas fisik, R&amp;D, sumber daya pemasaran, faktor keuangan.</p>
+<p><b>B. Lingkungan Eksternal Mikro</b> — elemen yang berinteraksi langsung dengan perusahaan:</p>
+<ol>
+<li><b>Pelanggan</b> — elemen terpenting; tujuan utama bisnis adalah menarik &amp; mempertahankan pelanggan.</li>
+<li><b>Pemasok</b> — pemasok bahan baku, komponen &amp; mesin; harus dapat dipercaya &amp; ramah.</li>
+<li><b>Perantara pemasaran</b> — mediator antara produsen &amp; konsumen akhir.</li>
+<li><b>Pesaing</b> — organisasi yang memproduksi produk serupa &amp; berebut pangsa pasar.</li>
+<li><b>Masyarakat umum</b> — respon masyarakat memengaruhi citra, penjualan &amp; pendapatan.</li>
+</ol>
+<p><b>C. Lingkungan Eksternal Makro</b> — faktor luas di luar kendali perusahaan:</p>
+<ol>
+<li><b>Politik</b> — pemerintah, lembaga politik, kebijakan &amp; legislasi (pajak, kontrak pemerintah).</li>
+<li><b>Ekonomi</b> — tingkat ekonomi, pengangguran, nilai tukar asing, inflasi &amp; deflasi.</li>
+<li><b>Sosial</b> — adat, nilai masyarakat, perubahan selera, standar hidup, pendidikan.</li>
+<li><b>Teknologi</b> — peralatan, teknologi &amp; teknik produksi yang ditingkatkan.</li>
+<li><b>Fisik</b> — bencana alam &amp; perubahan lingkungan yang memengaruhi produksi/pasokan.</li>
+<li><b>Hukum</b> — peraturan yang wajib dipatuhi (UU Merek Dagang, Komoditas Esensial, dll).</li>
+<li><b>Internasional</b> — sistem hukum/politik lintas negara, kebijakan ekonomi, budaya, tarif, perjanjian perdagangan.</li>
+</ol>
+</div></div>
+
+<div class="card accent-amber">
+<div class="qbox"><div class="label">Soal 2 — a</div>
+<p>Dalam manajemen bisnis ada perencanaan strategis, apa saja isi perencanaan strategis? Mengapa perencanaan itu penting dalam bisnis?</p></div>
+<div class="answer"><div class="label">Jawaban</div>
+<p><b>Isi Perencanaan Strategis</b> — strategi adalah "penetapan tujuan jangka panjang yang mendasar dari suatu organisasi, dan pemilihan alternatif tindakan serta alokasi sumber daya untuk mencapainya". Isi/proses perencanaan strategis meliputi:</p>
+<ol>
+<li><b>Formulasi Misi dan Tujuan</b> — berfokus pada pasar, dapat dicapai, dapat memotivasi, dan spesifik.</li>
+<li><b>Analisis Tujuan dan Strategi Saat Ini</b> — evaluasi apakah tujuan &amp; strategi yang berjalan sudah sesuai seharusnya.</li>
+<li><b>Analisis Lingkungan</b> — mengidentifikasi perubahan lingkungan &amp; kesempatan strategis yang bisa dimanfaatkan.</li>
+<li><b>Analisis Sumber Daya</b> — melihat kekuatan sumber daya organisasi relatif terhadap pesaing.</li>
+<li><b>Identifikasi Kesempatan Strategis</b> — muncul bila ada <i>gap</i> antara hasil strategi saat ini dengan hasil bila strategi lain (yang seharusnya) digunakan.</li>
+<li><b>Pengambilan Keputusan Strategis</b> — mengembangkan &amp; memilih alternatif keputusan terbaik.</li>
+<li><b>Pelaksanaan Strategi</b> — menjalankan alternatif terbaik untuk mencapai tujuan.</li>
+<li><b>Evaluasi dan Pengendalian Strategis</b> — memastikan pelaksanaan sesuai rencana &amp; mencapai tujuan yang diinginkan.</li>
+</ol>
+<p>(Ditambah 3 tingkatan strategi: korporasi — pasar mana yang dimasuki; unit bisnis — bagaimana bersaing; fungsional — menjalankan tiap fungsi.)</p>
+<p><b>Mengapa Perencanaan Penting:</b></p>
+<ol>
+<li><b>Memberi arah</b> — manajer &amp; karyawan tahu kemana organisasi menuju sehingga kegiatan dapat dikoordinasikan.</li>
+<li><b>Mengurangi ketidakpastian</b> — mendorong melihat ke depan, mengantisipasi perubahan, dan menyusun tanggapan yang tepat.</li>
+<li><b>Mengurangi kegiatan tumpang tindih</b> — ketidakefisienan menjadi jelas dan mudah dikoreksi.</li>
+<li><b>Menentukan standar untuk pengendalian</b> — kinerja aktual dapat dibandingkan dengan sasaran; penyimpangan teridentifikasi &amp; tindakan koreksi diambil.</li>
+</ol>
+<p>Selain itu perencanaan menghasilkan <b>"protective benefits"</b> (mengurangi kesalahan pengambilan keputusan) dan <b>"positive benefits"</b> (meningkatkan sukses pencapaian tujuan organisasi). Sesuai kata Abraham Lincoln: <i>"Give me six hours to cut down a tree and I will spend the first four sharpening the axe."</i></p>
+</div></div>
+
+<div class="card accent-emerald">
+<div class="qbox"><div class="label">Soal 2 — b</div>
+<p>Jelaskan Gaya Kepemimpinan Kontingensi menurut Hersey and Blanchard!</p></div>
+<div class="answer"><div class="label">Jawaban</div>
+<p><b>Gaya Kepemimpinan Situasional (Contingency) menurut Hersey &amp; Blanchard</b> (dalam Veithzal Rivai, 2014) adalah gaya kepemimpinan di mana <b>pemimpin/manajer harus menyesuaikan responnya menurut kondisi atau tingkat perkembangan kematangan, kemampuan, dan minat karyawan</b> dalam menyelesaikan tugas-tugasnya. Tidak ada gaya yang optimal untuk semua situasi — gaya yang tepat bergantung pada tingkat kesiapan/kematangan bawahan.</p>
+<p><b>Asumsi dasar:</b> perilaku kepemimpinan merupakan kombinasi tiga dimensi: ① banyaknya <b>pengarahan</b> yang diberikan, ② banyaknya <b>dukungan</b> yang diberikan, ③ <b>tingkat kematangan bawahan</b> (kombinasi kemauan &amp; kemampuan).</p>
+<p><b>4 Gaya Kepemimpinan:</b></p>
+<ol>
+<li><b>S1: Telling (Pemberitahu)</b> — Pengarahan Tinggi, Dukungan Rendah. Komunikasi satu arah; pemimpin memberitahu apa, bagaimana, mengapa, kapan &amp; dimana pekerjaan dilaksanakan; instruksi jelas &amp; pengawasan langsung. <b>Sesuai untuk kesiapan rendah (R1)</b> — pengikut tidak mampu &amp; tidak mau (K1).</li>
+<li><b>S2: Selling (Penjual)</b> — Pengarahan Tinggi, Dukungan Tinggi. Masih memberi arahan tetapi dengan komunikasi dua arah &amp; dukungan emosional untuk memotivasi &amp; membangun percaya diri. <b>Sesuai untuk kesiapan moderat (R2)</b> — mau tetapi tidak mampu (K2).</li>
+<li><b>S3: Participating (Partisipatif)</b> — Pengarahan Rendah, Dukungan Tinggi. Mendorong saling berbagi gagasan &amp; memfasilitasi; pemimpin menjadi pendengar yang baik &amp; memelihara hubungan. <b>Sesuai untuk kesiapan tinggi dengan motivasi moderat (R3)</b> — mampu tetapi tidak mau (K3).</li>
+<li><b>S4: Delegating (Pendelegasian)</b> — Pengarahan Rendah, Dukungan Rendah. Mengalihkan tanggung jawab keputusan &amp; pelaksanaan kepada pengikut; pemimpin hanya memonitor. <b>Sesuai untuk kesiapan tinggi (R4)</b> — mampu &amp; mau (K4).</li>
+</ol>
+<p><b>4 Tingkat Kesiapan Pengikut (Follower Readiness):</b> R1 = tidak mampu &amp; tidak mau (tidak kompeten &amp; tidak percaya diri) • R2 = tidak mampu tetapi sudah punya kemauan • R3 = memiliki pengetahuan &amp; keterampilan memadai tetapi tidak mau melaksanakan • R4 = memiliki pengetahuan, keterampilan &amp; kemauan kuat. Pemimpin yang efektif menggunakan tingkat perilaku kerja yang tinggi di sejumlah situasi dan hanya sekedarnya di situasi lain — gaya kepemimpinan "melipat" mengikuti kesiapan pengikut (R1→S1, R2→S2, R3→S3, R4→S4).</p>
+</div></div>
+
+<div class="card accent-rose">
+<div class="qbox"><div class="label">Soal 3 — a</div>
+<p>Jelaskan karakter wirausaha yang sangat penting dalam mengelola bisnis! Mengapa demikian?</p></div>
+<div class="answer"><div class="label">Jawaban</div>
+<p><b>Karakter</b> adalah tatanan nilai permanen dalam diri seseorang yang ditunjukkan secara konsisten dalam kehidupan sehari-hari — cara berpikir &amp; berperilaku yang menjadi ciri khas (KBBI; Ditjen Mandikdasmen). Karakter wirausaha yang sangat penting dalam mengelola bisnis:</p>
+<ol>
+<li><b>Keberanian mengambil risiko</b> — bisnis selalu mengandung ketidakpastian; tanpa keberanian, peluang takkan pernah dijawab. <i>(Mengapa: peluang usaha hanya untuk yang berani memulai.)</i></li>
+<li><b>Pekerja keras</b> — mengelola bisnis menuntut kerja nyata yang konsisten, bukan sekadar rencana di atas kertas.</li>
+<li><b>Komitmen yang tinggi terhadap pekerjaan</b> — komitmen menjaga konsistensi sampai tujuan tercapai meski rintangan datang.</li>
+<li><b>Jiwa bertanggung jawab terhadap setiap keputusan</b> — pengelola bisnis harus siap mempertanggungjawabkan setiap akibat dari keputusannya, termasuk kepada karyawan &amp; pelanggan.</li>
+<li><b>Berpikir kreatif dan inovatif</b> — lingkungan bisnis yang kompleks &amp; dinamis menuntut solusi baru agar tetap kompetitif (tanpa inovasi, bisnis kehilangan daya saing).</li>
+<li><b>Menyukai tantangan dan selalu berusaha maju</b> — tumbuh di zona perjuangan membuat bisnis terus berkembang.</li>
+<li><b>Pantang menyerah</b> — "setiap kegagalan adalah jalan yang lebih dekat ke arah keberhasilan"; kegagalan adalah bagian dari proses belajar.</li>
+<li><b>Cepat beradaptasi</b> — sifat lingkungan bisnis yang dinamis menuntut kemampuan menyesuaikan diri dengan cepat.</li>
+<li><b>Mudah meyakinkan orang</b> — penting untuk menjual gagasan, produk &amp; jasa; membangun jaringan, menarik mitra, pelanggan, dan investor.</li>
+</ol>
+<p><b>Mengapa demikian?</b> Karena karakter adalah nilai yang permanen &amp; konsisten — bukan sekadar keterampilan teknis yang bisa dipelajari sebentar. Karakter membentuk cara pengambilan keputusan, kualitas hubungan dengan mitra/karyawan/pelanggan, dan kepercayaan (kepercayaan adalah modal mahal dalam bisnis). Karakter wirausaha dibentuk melalui <b>paradigma yang benar</b> (paradigma diri sendiri, orang lain &amp; kehidupan berbasis nilai-nilai prinsip) dan <b>prinsip melangkah seperti bayi</b> — mempraktikkan nilai setahap demi setahap sampai menjadi kebiasaan dan akhirnya karakter.</p>
+</div></div>
+
+<div class="card accent-violet">
+<div class="qbox"><div class="label">Soal 3 — b</div>
+<p>Jelaskan 7 kebiasaan efektif yang dapat menjadi panduan bagi seseorang agar punya karakter pribadi yang kuat!</p></div>
+<div class="answer"><div class="label">Jawaban</div>
+<p>Menurut <b>Stephen R. Covey</b>, 7 kebiasaan efektif yang harus diterapkan dalam kehidupan sehari-hari:</p>
+<ol>
+<li><b>Berpikir Proaktif</b> — setiap peristiwa (baik/buruk) bergantung pada sikap kita terhadapnya. Berpikir proaktif = mengambil tindakan lebih positif dari peristiwa yang tidak menguntungkan; berpikir &amp; berbuat berdasarkan nilai; berpikir sebelum bertindak; menyadari <b>tidak ada yang bisa dikendalikan pada orang lain kecuali mengendalikan diri sendiri</b>. Kelebihan: tidak mudah tersinggung, bertanggung jawab atas pilihan, cepat pulih, fokus pada hal yang bisa diubah. (Lawannya: reaktif — mudah tersinggung, menyalahkan orang lain, banyak mengeluh.)</li>
+<li><b>Merujuk pada Tujuan Akhir</b> — tahu &amp; paham dari mana berasal, untuk apa ada, kemana menuju. Menyatakan visi &amp; misi kehidupan dengan tegas; cita-cita diwujudkan dengan komitmen kuat. "Diri sendirilah yang memimpin kehidupan, bukan kehidupan yang memimpin diri sendiri. Hidup merupakan <i>problem of choice</i>." Proses penetapan visi-misi: duplikasi, imitasi, personifikasi &amp; identifikasi orang yang diidolakan.</li>
+<li><b>Dahulukan yang Utama</b> — memilih aktivitas yang berdampak besar di masa depan. Ada 4 kuadran orang: suka menunda (tenang di awal, tertekan saat masalah menumpuk), <i>yes-man</i> (sulit menolak, mengabaikan tugas), pemalas (membuang waktu &amp; uang), dan <b>menentukan prioritas</b> (teliti, penuh perhitungan, mengalokasikan sumber daya dengan matang).</li>
+<li><b>Berpikir Menang-Menang</b> — membuat kehidupan baik bagi semua orang. 4 cara berpikir: menang-kalah (rakus, menghalalkan segala cara), kalah-menang (tidak percaya diri, tidak mau mencoba), kalah-kalah ("kalau saya tidak dapat, dia juga tidak boleh dapat"), dan <b>menang-menang</b>: "Saya menang, yang lain tidak kalah", "menang tanpo ngasorake" (tanpa mempermalukan lawan), "nglurug tanpa bala" (dengan negosiasi &amp; diplomasi).</li>
+<li><b>Berusahalah Memahami Terlebih Dahulu, Baru Dipahami</b> — manusia fitrahnya ingin diperhatikan. Dengan mendengarkan dulu kita memberi empati &amp; perhatian tulus; orang merasa dihormati &amp; diakui. "Bagaimana mungkin orang lain mau mendengarkan kita jika kita pun tidak pernah mau mendengarkan orang lain?" Cara mendengar baik: perhatian melalui <i>body language</i>.</li>
+<li><b>Wujudkan Sinergi</b> — berbagi <i>resources</i> dengan fokus keunggulan masing-masing; saling menerima &amp; member. Ilustrasi: 4 orang bekerja sendiri = 1+1+1+1 = 4; bersinergi hasilnya = 1111 bahkan 4444. Tidak ada orang sempurna — semua punya keunggulan &amp; kelemahan.</li>
+<li><b>Asahlah Gergajimu (Renewal)</b> — potensi yang tidak diasah akan terabaikan. "Batu sungai yang hitam tak bernilai — di tangan pemahat menjadi patung Ganesha yang mahal." Mengasah gergaji = mensyukuri karunia dengan mengoptimalkan apapun yang dimiliki. Semakin cepat mulai semakin baik karena umur ada batasnya; gelar/ijazah/status justru bisa menghambat bila menjadi hambatan mental.</li>
+</ol>
+<p>Kebiasaan 1–3 membangun <b>kemenangan pribadi</b>, kebiasaan 4–6 membangun <b>kemenangan bersama</b>, dan kebiasaan 7 adalah <b>pembaruan (renewal)</b> yang menjaga kebugaran seluruh kebiasaan — bersama-sama membentuk karakter pribadi yang kuat.</p>
+</div></div>
+
+<div class="card accent-orange">
+<div class="qbox"><div class="label">Soal 4 — a</div>
+<p>Jelaskan urutan proses untuk mendapatkan gagasan produk untuk berwirausaha!</p></div>
+<div class="answer"><div class="label">Jawaban</div>
+<p>Proses pencarian produk yang layak dijadikan awal gagasan usaha melalui <b>4 tahapan berurutan</b>:</p>
+<ol>
+<li><b>Tahap 1 — Merumuskan Kebutuhan</b><br>
+Menggunakan hirarki kebutuhan menurut <b>A.H. Maslow</b>: ① Kebutuhan fisiologis, ② Kebutuhan rasa aman &amp; cinta kasih, ③ Kebutuhan sosial, ④ Kebutuhan rasa harga diri, ⑤ Kebutuhan aktualisasi diri. Setiap tingkat kebutuhan melahirkan jenis usaha berbeda — misal: fisiologis → warung makan, toko sembako, kos-kosan; cinta kasih/aman → café, resto, perhotelan; sosial → podcast, EO; harga diri → perhiasan, dealer mobil mewah; aktualisasi diri → barang antik, lelang barang mewah.</li>
+<li><b>Tahap 2 — Menurunkan Kebutuhan menjadi Barang dan Jasa</b><br>
+Kebutuhan yang kompleks, bertingkat &amp; unik diturunkan menjadi pilihan barang/jasa yang <b>layak dipasarkan</b>. Syarat utamanya: barang/jasa tersebut harus mempunyai <b>nilai ekonomi</b> — untuk mendapatkannya seseorang harus mengorbankan sejumlah uang. Barang yang belum bernilai ekonomi (udara, sinar matahari, tanah, air sungai) belum bisa menjadi produk usaha.</li>
+<li><b>Tahap 3 — Mengubah Kebutuhan menjadi Permintaan</b><br>
+Produk bernilai ekonomi diubah menjadi <b>permintaan</b> — sejumlah barang yang dibutuhkan konsumen untuk memenuhi kebutuhan. Permintaan dibedakan menjadi: <b>permintaan potensial</b> (belum dapat diukur kemampuan daya belinya) dan <b>permintaan riil/efektif</b> — permintaan yang diikuti <b>kemampuan membeli (<i>ability to pay</i>) dan kemauan membeli (<i>willing to pay</i>) konsumen.</b></li>
+<li><b>Tahap 4 — Mengukur Permintaan Riil ke dalam Rumusan Rencana Penjualan</b><br>
+Dilakukan melalui <b>segmentasi pasar</b> — memilih secara spesifik jenis pasar &amp; karakteristik yang dilayani; memilah pasar heterogen menjadi beberapa kelompok pasar homogen (semakin banyak ukuran parameter, semakin spesifik) — dan <b>penempatan produk (positioning)</b>. Hasilnya berupa ukuran permintaan riil yang dirumuskan menjadi rencana penjualan.</li>
+</ol>
+</div></div>
+
+<div class="card accent-indigo">
+<div class="qbox"><div class="label">Soal 4 — b</div>
+<p>Jelaskan bagaimana metode ATM membimbing seseorang untuk dapat memulai berwirausaha? Apa saja yang perlu ditiru (T) dan yang perlu dimodifikasi (M)?</p></div>
+<div class="answer"><div class="label">Jawaban</div>
+<p><b>Metode ATM</b> adalah singkatan dari <b>Amati, Tiru, Modifikasi</b> — perintah untuk mengamati usaha yang sudah ada, meniru usaha tersebut, lalu memodifikasinya. Metode ini <b>bukan plagiat/plagiarisme</b> karena di dalamnya terdapat kegiatan modifikasi yang jelas mencari kelemahan/kekurangan usaha sebelumnya, kemudian mengganti atau menambahkan sesuatu sehingga terbentuk usaha yang baru. Dengan demikian ATM membimbing pemula memulai wirausaha tanpa harus mulai dari nol — belajar dari bisnis yang sudah terbukti berjalan, lalu menyempurnakannya dengan ciri khas sendiri.</p>
+<p><b>5 Tahapan Metode ATM:</b> ① Mempelajari bisnis yang sudah ada → ② Mengkaji input dan output suatu bisnis → ③ Menganalisa tren populasi dan data demografi → ④ Mengkaji tren ekonomi → ⑤ Meniru dan memodifikasi 4P (<i>Place, Price, Product, Promotion</i>).</p>
+<p><b>Langkah AMATI:</b> mengamati jalannya bisnis pesaing — bukan sekadar melihat tapi <b>mempelajari</b> produk, strategi pemasaran, dll; menyimpulkan hasil pengamatan sebagai referensi. Mengamati seluk beluk bisnis pesaing adalah hal wajib agar tetap eksis.</p>
+<p><b>Yang perlu ditiru (T):</b></p>
+<ol>
+<li>Prinsip usaha</li>
+<li>Sistem manajemen</li>
+<li>Pola kerja</li>
+<li>Proses produksi</li>
+<li>Peralatan yang digunakan</li>
+<li>Strategi pemasaran</li>
+<li>Standar pelayanan</li>
+<li><i>Fighting spirit</i> (semangat juang)</li>
+<li>Mentalitas</li>
+</ol>
+<p><b>Yang perlu dimodifikasi (M):</b> jika hanya Amati &amp; Tiru, bisnis akan terlihat <b>membosankan, monoton &amp; tidak kreatif</b>. Harus diberi sentuhan yang berbeda agar jauh dari kesan meniru. Yang dimodifikasi adalah <b>karakter, sumber daya, gaya serta kondisi Anda sendiri</b> yang memberi warna &amp; sentuhan berbeda dari milik pesaing sehingga terkesan segar. Modifikasi dilakukan pada elemen <b>4P</b>: <b>Place</b> (tempat/lokasi/distribusi), <b>Price</b> (harga), <b>Product</b> (produk: fitur, kualitas, kemasan), dan <b>Promotion</b> (promosi). Pertanyaan pemandu: Apa yang diinginkan konsumen? Bagaimana cara memuaskan konsumen? Apakah cara terbaik untuk memuaskan konsumen? (Contoh hasil ATM: Bakso Geger Semarang.)</p>
+</div></div>
+		</div>
+	</section>
+</Layout>

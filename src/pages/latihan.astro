@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+import QuizKilat from '../components/QuizKilat.tsx';
+
+const latihanSoal = [
+	{
+		"label": "Soal 1 — a (bobot: pemahaman)",
+		"q": "<p>Jelaskan tiga fungsi utama bisnis menurut Steinhoff beserta empat fungsi bisnis secara rinci! Sebutkan pula tiga makna ruang lingkup istilah bisnis!</p>",
+		"a": "<p><b>3 Fungsi Utama (Steinhoff, <i>The World of Business</i>):</b> ① Mencari bahan baku (<i>acquiring raw material</i>), ② Mengolah bahan baku menjadi produk jadi (<i>manufacturing raw materials into product</i>), ③ Mendistribusikan produk kepada konsumen (<i>distributing product to consumer</i>).</p>\n<p><b>4 Fungsi Rinci:</b> ① Fungsi Produksi — menghasilkan barang/jasa yang dibutuhkan masyarakat. ② Fungsi Distribusi — menyalurkan ke lokasi terdekat yang terjangkau konsumen. ③ Fungsi Penjualan — menjual barang/jasa yang dihasilkan kepada pengguna/konsumen. ④ Fungsi Pemasaran — penyimpanan &amp; pemasaran agar barang berguna bagi konsumen di waktu yang tepat.</p>\n<p><b>3 Makna Ruang Lingkup Bisnis:</b> ① Badan usaha (kesatuan yuridis, teknis, ekonomis untuk mencari profit), ② Sektor pasar tertentu (seperti pasar modal), ③ Semua aktivitas pada komunitas produsen barang/jasa.</p>"
+	},
+	{
+		"label": "Soal 1 — b (bobot: pemahaman)",
+		"q": "<p>Jelaskan empat karakteristik lingkungan bisnis menurut materi kuliah beserta contohnya masing-masing!</p>",
+		"a": "<p>① <b>Kompleks</b> — banyak sekali faktor, peristiwa, kondisi &amp; pengaruh dari berbagai sumber sehingga mustahil memahami seluruhnya; contoh: ponsel mengambil alih bisnis sistem musik yang tak terbayangkan sebelumnya. ② <b>Dinamis</b> — terus berubah seperti lingkungan alam; contoh: industri film dulu menghasilkan pendapatan dari CD musik, kini dari nada dering. ③ <b>Multi-faset</b> — pengamat yang berbeda melihat perubahan secara berbeda (peluang bagi sebagian, ancaman bagi lain); contoh: TV Plasma/LCD digantikan LED — sebagian produsen melihatnya peluang untuk memproduksi LED. ④ <b>Dampak jangkauan jauh</b> — dampaknya luas bagi organisasi; bisnis yang menyadari dampak lingkungan terus beradaptasi agar selaras dengannya.</p>"
+	},
+	{
+		"label": "Soal 2 — a (bobot: analisis)",
+		"q": "<p>Perencanaan dapat diklasifikasikan berdasarkan sifat penggunaannya. Jelaskan rencana tunggal (sekali pakai) dan rencana standing beserta contohnya masing-masing! Lalu sebutkan empat manfaat perencanaan bagi organisasi!</p>",
+		"a": "<p><b>Berdasarkan sifat penggunaan:</b> ① <b>Rencana Tunggal (sekali pakai)</b> — direncanakan untuk kegiatan yang tidak berulang; contoh: program, proyek, dan anggaran. ② <b>Rencana Standing (tetap/berulang)</b> — direncanakan untuk kegiatan yang berulang; contoh: kebijakan, prosedur standar, dan aturan.</p>\n<p><b>4 Manfaat Perencanaan:</b> ① Memberi arah — manajer &amp; karyawan tahu kemana organisasi menuju sehingga kegiatan dapat dikoordinasikan. ② Mengurangi ketidakpastian — mendorong melihat ke depan &amp; mengantisipasi perubahan. ③ Mengurangi kegiatan tumpang tindih — inefisiensi menjadi jelas &amp; mudah dikoreksi. ④ Menentukan standar untuk pengendalian — kinerja aktual dibandingkan dengan sasaran; penyimpangan diidentifikasi &amp; tindakan koreksi diambil.</p>"
+	},
+	{
+		"label": "Soal 2 — b (bobot: pemahaman)",
+		"q": "<p>Bandingkan struktur organisasi matriks dengan struktur organisasi komite: sebutkan persamaan dan perbedaannya!</p>",
+		"a": "<p><b>Persamaan:</b> sama-sama berbiaya relatif tinggi • sama-sama dapat menentukan/memindahkan tenaga spesialis secara efisien • strukturnya tidak sederhana/cenderung rumit • membutuhkan koordinasi yang baik antarpihak demi tujuan bersama.</p>\n<p><b>Perbedaan:</b> ① Pada komite, semua anggota memiliki hak, wewenang &amp; tanggung jawab <b>sama</b>; pada matriks hak &amp; wewenang <b>berbeda</b> sesuai perintah/penunjukan (manajer proyek vs manajer fungsional). ② Matriks berisiko <b>multi-komando</b> — karyawan melapor kepada dua pimpinan (fungsional &amp; proyek); komite <b>tidak memiliki</b> multi-komando.</p>"
+	},
+	{
+		"label": "Soal 3 — a (bobot: pemahaman)",
+		"q": "<p>Jelaskan Path-Goal Theory (Teori Jalur-Tujuan) menurut House: empat pola perilaku kepemimpinan beserta situasi di mana masing-masing paling efektif!</p>",
+		"a": "<p>Asumsi: perilaku pemimpin dapat menggerakkan bawahan jika menjadi sumber kepuasan bagi mereka; efektivitas = interaksi perilaku pemimpin dengan karakteristik situasi (karakteristik tugas &amp; karakteristik bawahan). ① <b>Supportive Leadership</b> — perhatian pada kebutuhan &amp; kesejahteraan bawahan, suasana bersahabat; efektif saat tugas stressful/membosankan (meningkatkan percaya diri &amp; mengurangi ketegangan). ② <b>Directive Leadership</b> — memberitahu harapan, pedoman spesifik, aturan/prosedur, mengatur waktu; efektif saat tugas terstruktur &amp; kompleks dan bawahan tidak berpengalaman. ③ <b>Participative Leadership</b> — berkonsultasi &amp; mempertimbangkan opini bawahan; efektif saat tugas tidak terstruktur (meningkatkan kejelasan peran). ④ <b>Achievement-Oriented Leadership</b> — tujuan menantang, standar tinggi, menunjukkan kepercayaan pada bawahan; efektif saat tugas tidak terstruktur (meningkatkan percaya diri &amp; harapan menyelesaikan tugas menantang).</p>"
+	},
+	{
+		"label": "Soal 3 — b (bobot: analisis)",
+		"q": "<p>Jelaskan empat kelebihan dan empat kelemahan gaya kepemimpinan otoriter! Dalam situasi apakah gaya ini justru efektif digunakan?</p>",
+		"a": "<p><b>Kelebihan:</b> ① pengambilan keputusan cepat, terutama situasi stres &amp; berbatas waktu; ② rantai komando &amp; pengawasan jelas; ③ bermanfaat bila bawahan kurang terampil — pemimpin dapat melatih &amp; mengatur staf; ④ hasil lebih konsisten &amp; terukur (tugas, target, tenggat jelas).</p>\n<p><b>Kelemahan:</b> ① memunculkan resistensi/kebencian anggota; ② tekanan tinggi pada bawahan → frustrasi &amp; semangat menurun; ③ keterampilan pemecahan masalah kreatif rendah (bawahan tak bisa menyumbang ide); ④ kesuksesan bergantung pada kemampuan pemimpin; ⑤ turnover tinggi.</p>\n<p><b>Kapan efektif:</b> ① organisasi mengalami perubahan signifikan/ketidakpastian; ② membutuhkan keputusan cepat &amp; akurat (konstruksi, manufaktur); ③ tidak mentoleransi kesalahan (kontrol kualitas ketat, rumah sakit — kesalahan bisa berakibat fatal); ④ lingkungan tekanan tinggi atau darurat (konflik/perang).</p>"
+	},
+	{
+		"label": "Soal 4 — a (bobot: pemahaman)",
+		"q": "<p>Jelaskan karakteristik tipe kepribadian High-C (Compliant) menurut DISC: kekuatan, cara mengatur, dan area yang perlu diperbaiki!</p>",
+		"a": "<p><b>Karakteristik:</b> mengumpulkan data, fakta &amp; gambar; melakukan segalanya sangat baik bahkan sempurna; memiliki standar sendiri yang jauh lebih tinggi dari orang lain; pendiam/tertutup &amp; berorientasi tugas; tidak suka didorong/dipaksa; merencanakan segalanya sebelum bertindak; hampir tidak pernah buru-buru tanpa mempertimbangkan semua fakta &amp; grafik.</p>\n<p><b>Cara mengatur:</b> beri <b>data sebanyak mungkin</b> (grafik, tabel, form tertulis/essay) — mereka hanya menginginkan data; justifikasi dengan logika (tidak peduli Anda teman baiknya); beri waktu untuk mengambil keputusan; jika menawarkan cara baru, tunjukkan bahwa itu meningkatkan <b>standar atau efisiensi</b> mereka.</p>\n<p><b>Area perbaikan:</b> berjuang menjadi <b>excellence, bukan perfection</b>; minta opini orang lain &amp; menerima standar \"cukup baik\"; lebih cepat mengambil keputusan; melakukan sesuatu yang baru &amp; spontan; lebih terbuka menyatakan perasaan; lebih banyak bergaul dengan orang.</p>"
+	},
+	{
+		"label": "Soal 4 — b (bobot: analisis)",
+		"q": "<p>Dalam LPC Contingency Model Fiedler, sebutkan tiga faktor situasi yang menentukan efektivitas pemimpin! Jelaskan pula perbedaan pemimpin LPC tinggi dan LPC rendah!</p>",
+		"a": "<p><b>3 Faktor Situasi:</b> ① <b>Hubungan pemimpin–bawahan</b> (<i>leader-member relations</i>) — baik/buruk; ② <b>Struktur tugas</b> (<i>task structure</i>) — terstruktur/tidak terstruktur; ③ <b>Kekuatan posisi</b> (<i>position power</i>) — kuat/lemah.</p>\n<p><b>Perbedaan LPC:</b> efektivitas kepemimpinan diukur dengan skor <b>Least Preferred Coworker (LPC)</b> — rekan kerja yang paling tidak disukai. <b>Pemimpin LPC tinggi</b> mempunyai hubungan yang dekat dengan bawahan (berorientasi hubungan/orang); <b>pemimpin LPC rendah</b> cenderung berorientasi pada pencapaian sasaran tugas. Model ini beranggapan kontribusi pemimpin terhadap efektivitas kelompok tergantung pada kecocokan antara gaya kepemimpinan dengan kesesuaian situasi — misal: situasi sangat menguntungkan (hubungan baik, tugas terstruktur, posisi kuat) → LPC rendah efektif; situasi sedang menguntungkan → LPC tinggi efektif; situasi paling tidak menguntungkan → kembali LPC rendah.</p>"
+	},
+	{
+		"label": "Soal 5 — a (bobot: pemahaman)",
+		"q": "<p>Jelaskan tiga paradigma pembentuk karakter menurut materi Karakter Wirausaha, beserta panduan yang benar untuk masing-masing paradigma!</p>",
+		"a": "<p><b>Paradigma</b> (Sean Covey) = cara kita memandang sesuatu, pandangan/kerangka acuan/keyakinan kita. Tiga paradigma pembentuk karakter: ① <b>Paradigma terhadap diri sendiri</b> — bagaimana &amp; ke mana seseorang tergantung persepsinya pada dirinya sendiri. Panduan: bersyukur atas eksistensi, <i>positive thinking</i>, yakin setiap orang mampu berubah &amp; merubah nasib, berani mencoba berkali-kali. ② <b>Paradigma terhadap orang lain</b> — kesalahan menilai orang terjadi karena informasi tidak lengkap. Panduan: selalu berprasangka baik &amp; melakukan klarifikasi. ③ <b>Paradigma kehidupan</b> — berpegang pada nilai-nilai prinsip (kebenaran universal: jujur, kerja keras, bertanggung jawab, adil, disiplin). Panduan: nilai prinsip dipraktikkan setahap demi setahap (\"prinsip melangkah seperti bayi\") sampai menjadi kebiasaan lalu karakter — karena setiap nilai prinsip \"selalu berkata benar\" (mis. kejujuran berbuah kepercayaan).</p>"
+	},
+	{
+		"label": "Soal 5 — b (bobot: analisis)",
+		"q": "<p>Jelaskan perbedaan permintaan potensial dan permintaan riil! Mengapa tahap ini penting sebelum merumuskan rencana penjualan?</p>",
+		"a": "<p><b>Permintaan</b> adalah sejumlah barang yang dibutuhkan konsumen untuk memenuhi kebutuhannya. <b>Permintaan potensial</b> = permintaan yang belum dapat diukur seberapa kemampuan daya belinya (hanya sebatas keinginan/kebutuhan). <b>Permintaan riil/efektif</b> = permintaan yang diikuti <b>kemampuan membeli (<i>ability to pay</i>) dan kemauan membeli (<i>willing to pay</i>) konsumen.</b></p>\n<p><b>Mengapa penting:</b> karena rencana penjualan hanya bisa disusun dari angka yang realistis. Jika sebuah usaha merencanakan penjualan berdasarkan permintaan potensial (tanpa daya beli &amp; kemauan membayar yang terukur), target penjualan akan melampaui permintaan efektif sehingga rencana gagal. Tahap ini (mengukur permintaan riil → segmentasi pasar &amp; positioning → rumusan rencana penjualan) menjembatani produk bernilai ekonomi menjadi angka penjualan yang dapat dipertanggungjawabkan.</p>"
+	},
+	{
+		"label": "Soal 6 — a (bobot: pemahaman)",
+		"q": "<p>Sebutkan sembilan blok komponen Business Model Canvas (BMC) dan jelaskan singkat blok Value Proposition beserta manfaatnya bagi bisnis!</p>",
+		"a": "<p><b>9 Blok BMC (Osterwalder, 2012):</b> ① Value Proposition, ② Customer Segmen, ③ Customer Relationship, ④ Channel, ⑤ Key Activities, ⑥ Key Resources, ⑦ Key Partners, ⑧ Cost Structure, ⑨ Revenue Streams. (Didahului oleh <b>Noble Purpose</b> — pernyataan visi &amp; misi agar usaha bermanfaat bagi masyarakat, bukan sekadar keuntungan.)</p>\n<p><b>Value Proposition</b> = nilai jual produk/jasa sehingga konsumen memilih perusahaan Anda daripada kompetitor; memastikan bisnis menjual solusi atas masalah yang benar-benar dihadapi konsumen. Pertanyaan pemandu: apa penyebab masalah itu terjadi? mengapa konsumen ingin masalah hilang? apa manfaat bisnis untuk konsumen? <b>Manfaatnya:</b> membaca perilaku konsumen lebih akurat, memvisualisasi nilai bisnis, dan menghasilkan produk sesuai ekspektasi pasar sehingga produk lebih mudah diterima &amp; bisnis tumbuh.</p>"
+	},
+	{
+		"label": "Soal 6 — b (bobot: analisis)",
+		"q": "<p>Seorang wirausaha hanya mengandalkan satu jenis produk untuk satu segmen pelanggan. Berdasarkan materi Masalah dan Hambatan Bisnis, masalah apa yang dihadapinya dan bagaimana solusinya? Jelaskan!</p>",
+		"a": "<p>Masalahnya adalah <b>ketergantungan pada satu sumber pendapatan</b> — bisnis yang hanya mengandalkan satu sumber pendapatan akan kesulitan jika sumber tersebut terganggu (misal: selera pelanggan berubah, pemasok bermasalah, atau segmen pasar menyusut, maka seluruh pendapatan ikut terhenti sekaligus).</p>\n<p><b>Solusinya:</b> ① <b>Diversifikasi produk atau layanan</b> untuk menciptakan lebih banyak aliran pendapatan (multiple revenue streams — sesuai blok Revenue Streams pada BMC). ② <b>Jajaki pasar baru atau segmen pelanggan yang berbeda</b> (sesuai blok Customer Segmen). Selain itu disarankan membuat rencana keuangan yang fleksibel &amp; terus memantau kondisi pasar — prinsip adaptasi: mengubah hambatan menjadi peluang pertumbuhan melalui kemampuan beradaptasi, berinovasi &amp; terus belajar.</p>"
+	}
+];
+---
+
+<Layout
+	title="Latihan Soal — Persiapan UTS Manajemen Bisnis"
+	heading="Latihan Soal"
+	subheading="12 soal essai (6 bagian a & b) — bobot & format menyerupai soal UTS, lengkap dengan kunci jawaban"
+>
+	<section class="topic">
+		<div class="wrap">
+			<QuizKilat client:load soal={latihanSoal} />
+			<hr class="divider" />
+<div class="sec-title"><span class="num">📝</span><h2>Latihan Soal — Format Serip</h2></div>
+<p class="sec-sub">12 soal essai (6 bagian a &amp; b) — bobot &amp; format menyerupai soal UTS di atas, lengkap dengan kunci jawaban</p>
+
+<div class="card accent-sky">
+<h3>Paket 1 — Bisnis &amp; Lingkungan Bisnis</h3>
+<div class="qbox"><div class="label">Soal 1 — a (bobot: pemahaman)</div>
+<p>Jelaskan tiga fungsi utama bisnis menurut Steinhoff beserta empat fungsi bisnis secara rinci! Sebutkan pula tiga makna ruang lingkup istilah bisnis!</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p><b>3 Fungsi Utama (Steinhoff, <i>The World of Business</i>):</b> ① Mencari bahan baku (<i>acquiring raw material</i>), ② Mengolah bahan baku menjadi produk jadi (<i>manufacturing raw materials into product</i>), ③ Mendistribusikan produk kepada konsumen (<i>distributing product to consumer</i>).</p>
+<p><b>4 Fungsi Rinci:</b> ① Fungsi Produksi — menghasilkan barang/jasa yang dibutuhkan masyarakat. ② Fungsi Distribusi — menyalurkan ke lokasi terdekat yang terjangkau konsumen. ③ Fungsi Penjualan — menjual barang/jasa yang dihasilkan kepada pengguna/konsumen. ④ Fungsi Pemasaran — penyimpanan &amp; pemasaran agar barang berguna bagi konsumen di waktu yang tepat.</p>
+<p><b>3 Makna Ruang Lingkup Bisnis:</b> ① Badan usaha (kesatuan yuridis, teknis, ekonomis untuk mencari profit), ② Sektor pasar tertentu (seperti pasar modal), ③ Semua aktivitas pada komunitas produsen barang/jasa.</p>
+</div>
+<div class="qbox"><div class="label">Soal 1 — b (bobot: pemahaman)</div>
+<p>Jelaskan empat karakteristik lingkungan bisnis menurut materi kuliah beserta contohnya masing-masing!</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p>① <b>Kompleks</b> — banyak sekali faktor, peristiwa, kondisi &amp; pengaruh dari berbagai sumber sehingga mustahil memahami seluruhnya; contoh: ponsel mengambil alih bisnis sistem musik yang tak terbayangkan sebelumnya. ② <b>Dinamis</b> — terus berubah seperti lingkungan alam; contoh: industri film dulu menghasilkan pendapatan dari CD musik, kini dari nada dering. ③ <b>Multi-faset</b> — pengamat yang berbeda melihat perubahan secara berbeda (peluang bagi sebagian, ancaman bagi lain); contoh: TV Plasma/LCD digantikan LED — sebagian produsen melihatnya peluang untuk memproduksi LED. ④ <b>Dampak jangkauan jauh</b> — dampaknya luas bagi organisasi; bisnis yang menyadari dampak lingkungan terus beradaptasi agar selaras dengannya.</p>
+</div>
+</div>
+
+<div class="card accent-amber">
+<h3>Paket 2 — Perencanaan &amp; Pengorganisasian</h3>
+<div class="qbox"><div class="label">Soal 2 — a (bobot: analisis)</div>
+<p>Perencanaan dapat diklasifikasikan berdasarkan sifat penggunaannya. Jelaskan rencana tunggal (sekali pakai) dan rencana standing beserta contohnya masing-masing! Lalu sebutkan empat manfaat perencanaan bagi organisasi!</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p><b>Berdasarkan sifat penggunaan:</b> ① <b>Rencana Tunggal (sekali pakai)</b> — direncanakan untuk kegiatan yang tidak berulang; contoh: program, proyek, dan anggaran. ② <b>Rencana Standing (tetap/berulang)</b> — direncanakan untuk kegiatan yang berulang; contoh: kebijakan, prosedur standar, dan aturan.</p>
+<p><b>4 Manfaat Perencanaan:</b> ① Memberi arah — manajer &amp; karyawan tahu kemana organisasi menuju sehingga kegiatan dapat dikoordinasikan. ② Mengurangi ketidakpastian — mendorong melihat ke depan &amp; mengantisipasi perubahan. ③ Mengurangi kegiatan tumpang tindih — inefisiensi menjadi jelas &amp; mudah dikoreksi. ④ Menentukan standar untuk pengendalian — kinerja aktual dibandingkan dengan sasaran; penyimpangan diidentifikasi &amp; tindakan koreksi diambil.</p>
+</div>
+<div class="qbox"><div class="label">Soal 2 — b (bobot: pemahaman)</div>
+<p>Bandingkan struktur organisasi matriks dengan struktur organisasi komite: sebutkan persamaan dan perbedaannya!</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p><b>Persamaan:</b> sama-sama berbiaya relatif tinggi • sama-sama dapat menentukan/memindahkan tenaga spesialis secara efisien • strukturnya tidak sederhana/cenderung rumit • membutuhkan koordinasi yang baik antarpihak demi tujuan bersama.</p>
+<p><b>Perbedaan:</b> ① Pada komite, semua anggota memiliki hak, wewenang &amp; tanggung jawab <b>sama</b>; pada matriks hak &amp; wewenang <b>berbeda</b> sesuai perintah/penunjukan (manajer proyek vs manajer fungsional). ② Matriks berisiko <b>multi-komando</b> — karyawan melapor kepada dua pimpinan (fungsional &amp; proyek); komite <b>tidak memiliki</b> multi-komando.</p>
+</div>
+</div>
+
+<div class="card accent-emerald">
+<h3>Paket 3 — Kepemimpinan</h3>
+<div class="qbox"><div class="label">Soal 3 — a (bobot: pemahaman)</div>
+<p>Jelaskan Path-Goal Theory (Teori Jalur-Tujuan) menurut House: empat pola perilaku kepemimpinan beserta situasi di mana masing-masing paling efektif!</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p>Asumsi: perilaku pemimpin dapat menggerakkan bawahan jika menjadi sumber kepuasan bagi mereka; efektivitas = interaksi perilaku pemimpin dengan karakteristik situasi (karakteristik tugas &amp; karakteristik bawahan). ① <b>Supportive Leadership</b> — perhatian pada kebutuhan &amp; kesejahteraan bawahan, suasana bersahabat; efektif saat tugas stressful/membosankan (meningkatkan percaya diri &amp; mengurangi ketegangan). ② <b>Directive Leadership</b> — memberitahu harapan, pedoman spesifik, aturan/prosedur, mengatur waktu; efektif saat tugas terstruktur &amp; kompleks dan bawahan tidak berpengalaman. ③ <b>Participative Leadership</b> — berkonsultasi &amp; mempertimbangkan opini bawahan; efektif saat tugas tidak terstruktur (meningkatkan kejelasan peran). ④ <b>Achievement-Oriented Leadership</b> — tujuan menantang, standar tinggi, menunjukkan kepercayaan pada bawahan; efektif saat tugas tidak terstruktur (meningkatkan percaya diri &amp; harapan menyelesaikan tugas menantang).</p>
+</div>
+<div class="qbox"><div class="label">Soal 3 — b (bobot: analisis)</div>
+<p>Jelaskan empat kelebihan dan empat kelemahan gaya kepemimpinan otoriter! Dalam situasi apakah gaya ini justru efektif digunakan?</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p><b>Kelebihan:</b> ① pengambilan keputusan cepat, terutama situasi stres &amp; berbatas waktu; ② rantai komando &amp; pengawasan jelas; ③ bermanfaat bila bawahan kurang terampil — pemimpin dapat melatih &amp; mengatur staf; ④ hasil lebih konsisten &amp; terukur (tugas, target, tenggat jelas).</p>
+<p><b>Kelemahan:</b> ① memunculkan resistensi/kebencian anggota; ② tekanan tinggi pada bawahan → frustrasi &amp; semangat menurun; ③ keterampilan pemecahan masalah kreatif rendah (bawahan tak bisa menyumbang ide); ④ kesuksesan bergantung pada kemampuan pemimpin; ⑤ turnover tinggi.</p>
+<p><b>Kapan efektif:</b> ① organisasi mengalami perubahan signifikan/ketidakpastian; ② membutuhkan keputusan cepat &amp; akurat (konstruksi, manufaktur); ③ tidak mentoleransi kesalahan (kontrol kualitas ketat, rumah sakit — kesalahan bisa berakibat fatal); ④ lingkungan tekanan tinggi atau darurat (konflik/perang).</p>
+</div>
+</div>
+
+<div class="card accent-violet">
+<h3>Paket 4 — DISC &amp; Kontingensi</h3>
+<div class="qbox"><div class="label">Soal 4 — a (bobot: pemahaman)</div>
+<p>Jelaskan karakteristik tipe kepribadian High-C (Compliant) menurut DISC: kekuatan, cara mengatur, dan area yang perlu diperbaiki!</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p><b>Karakteristik:</b> mengumpulkan data, fakta &amp; gambar; melakukan segalanya sangat baik bahkan sempurna; memiliki standar sendiri yang jauh lebih tinggi dari orang lain; pendiam/tertutup &amp; berorientasi tugas; tidak suka didorong/dipaksa; merencanakan segalanya sebelum bertindak; hampir tidak pernah buru-buru tanpa mempertimbangkan semua fakta &amp; grafik.</p>
+<p><b>Cara mengatur:</b> beri <b>data sebanyak mungkin</b> (grafik, tabel, form tertulis/essay) — mereka hanya menginginkan data; justifikasi dengan logika (tidak peduli Anda teman baiknya); beri waktu untuk mengambil keputusan; jika menawarkan cara baru, tunjukkan bahwa itu meningkatkan <b>standar atau efisiensi</b> mereka.</p>
+<p><b>Area perbaikan:</b> berjuang menjadi <b>excellence, bukan perfection</b>; minta opini orang lain &amp; menerima standar "cukup baik"; lebih cepat mengambil keputusan; melakukan sesuatu yang baru &amp; spontan; lebih terbuka menyatakan perasaan; lebih banyak bergaul dengan orang.</p>
+</div>
+<div class="qbox"><div class="label">Soal 4 — b (bobot: analisis)</div>
+<p>Dalam LPC Contingency Model Fiedler, sebutkan tiga faktor situasi yang menentukan efektivitas pemimpin! Jelaskan pula perbedaan pemimpin LPC tinggi dan LPC rendah!</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p><b>3 Faktor Situasi:</b> ① <b>Hubungan pemimpin–bawahan</b> (<i>leader-member relations</i>) — baik/buruk; ② <b>Struktur tugas</b> (<i>task structure</i>) — terstruktur/tidak terstruktur; ③ <b>Kekuatan posisi</b> (<i>position power</i>) — kuat/lemah.</p>
+<p><b>Perbedaan LPC:</b> efektivitas kepemimpinan diukur dengan skor <b>Least Preferred Coworker (LPC)</b> — rekan kerja yang paling tidak disukai. <b>Pemimpin LPC tinggi</b> mempunyai hubungan yang dekat dengan bawahan (berorientasi hubungan/orang); <b>pemimpin LPC rendah</b> cenderung berorientasi pada pencapaian sasaran tugas. Model ini beranggapan kontribusi pemimpin terhadap efektivitas kelompok tergantung pada kecocokan antara gaya kepemimpinan dengan kesesuaian situasi — misal: situasi sangat menguntungkan (hubungan baik, tugas terstruktur, posisi kuat) → LPC rendah efektif; situasi sedang menguntungkan → LPC tinggi efektif; situasi paling tidak menguntungkan → kembali LPC rendah.</p>
+</div>
+</div>
+
+<div class="card accent-orange">
+<h3>Paket 5 — Wirausaha &amp; Gagasan Usaha</h3>
+<div class="qbox"><div class="label">Soal 5 — a (bobot: pemahaman)</div>
+<p>Jelaskan tiga paradigma pembentuk karakter menurut materi Karakter Wirausaha, beserta panduan yang benar untuk masing-masing paradigma!</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p><b>Paradigma</b> (Sean Covey) = cara kita memandang sesuatu, pandangan/kerangka acuan/keyakinan kita. Tiga paradigma pembentuk karakter: ① <b>Paradigma terhadap diri sendiri</b> — bagaimana &amp; ke mana seseorang tergantung persepsinya pada dirinya sendiri. Panduan: bersyukur atas eksistensi, <i>positive thinking</i>, yakin setiap orang mampu berubah &amp; merubah nasib, berani mencoba berkali-kali. ② <b>Paradigma terhadap orang lain</b> — kesalahan menilai orang terjadi karena informasi tidak lengkap. Panduan: selalu berprasangka baik &amp; melakukan klarifikasi. ③ <b>Paradigma kehidupan</b> — berpegang pada nilai-nilai prinsip (kebenaran universal: jujur, kerja keras, bertanggung jawab, adil, disiplin). Panduan: nilai prinsip dipraktikkan setahap demi setahap ("prinsip melangkah seperti bayi") sampai menjadi kebiasaan lalu karakter — karena setiap nilai prinsip "selalu berkata benar" (mis. kejujuran berbuah kepercayaan).</p>
+</div>
+<div class="qbox"><div class="label">Soal 5 — b (bobot: analisis)</div>
+<p>Jelaskan perbedaan permintaan potensial dan permintaan riil! Mengapa tahap ini penting sebelum merumuskan rencana penjualan?</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p><b>Permintaan</b> adalah sejumlah barang yang dibutuhkan konsumen untuk memenuhi kebutuhannya. <b>Permintaan potensial</b> = permintaan yang belum dapat diukur seberapa kemampuan daya belinya (hanya sebatas keinginan/kebutuhan). <b>Permintaan riil/efektif</b> = permintaan yang diikuti <b>kemampuan membeli (<i>ability to pay</i>) dan kemauan membeli (<i>willing to pay</i>) konsumen.</b></p>
+<p><b>Mengapa penting:</b> karena rencana penjualan hanya bisa disusun dari angka yang realistis. Jika sebuah usaha merencanakan penjualan berdasarkan permintaan potensial (tanpa daya beli &amp; kemauan membayar yang terukur), target penjualan akan melampaui permintaan efektif sehingga rencana gagal. Tahap ini (mengukur permintaan riil → segmentasi pasar &amp; positioning → rumusan rencana penjualan) menjembatani produk bernilai ekonomi menjadi angka penjualan yang dapat dipertanggungjawabkan.</p>
+</div>
+</div>
+
+<div class="card accent-rose">
+<h3>Paket 6 — ATM, BMC &amp; Hambatan Bisnis</h3>
+<div class="qbox"><div class="label">Soal 6 — a (bobot: pemahaman)</div>
+<p>Sebutkan sembilan blok komponen Business Model Canvas (BMC) dan jelaskan singkat blok Value Proposition beserta manfaatnya bagi bisnis!</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p><b>9 Blok BMC (Osterwalder, 2012):</b> ① Value Proposition, ② Customer Segmen, ③ Customer Relationship, ④ Channel, ⑤ Key Activities, ⑥ Key Resources, ⑦ Key Partners, ⑧ Cost Structure, ⑨ Revenue Streams. (Didahului oleh <b>Noble Purpose</b> — pernyataan visi &amp; misi agar usaha bermanfaat bagi masyarakat, bukan sekadar keuntungan.)</p>
+<p><b>Value Proposition</b> = nilai jual produk/jasa sehingga konsumen memilih perusahaan Anda daripada kompetitor; memastikan bisnis menjual solusi atas masalah yang benar-benar dihadapi konsumen. Pertanyaan pemandu: apa penyebab masalah itu terjadi? mengapa konsumen ingin masalah hilang? apa manfaat bisnis untuk konsumen? <b>Manfaatnya:</b> membaca perilaku konsumen lebih akurat, memvisualisasi nilai bisnis, dan menghasilkan produk sesuai ekspektasi pasar sehingga produk lebih mudah diterima &amp; bisnis tumbuh.</p>
+</div>
+<div class="qbox"><div class="label">Soal 6 — b (bobot: analisis)</div>
+<p>Seorang wirausaha hanya mengandalkan satu jenis produk untuk satu segmen pelanggan. Berdasarkan materi Masalah dan Hambatan Bisnis, masalah apa yang dihadapinya dan bagaimana solusinya? Jelaskan!</p></div>
+<div class="answer"><div class="label">Kunci Jawaban</div>
+<p>Masalahnya adalah <b>ketergantungan pada satu sumber pendapatan</b> — bisnis yang hanya mengandalkan satu sumber pendapatan akan kesulitan jika sumber tersebut terganggu (misal: selera pelanggan berubah, pemasok bermasalah, atau segmen pasar menyusut, maka seluruh pendapatan ikut terhenti sekaligus).</p>
+<p><b>Solusinya:</b> ① <b>Diversifikasi produk atau layanan</b> untuk menciptakan lebih banyak aliran pendapatan (multiple revenue streams — sesuai blok Revenue Streams pada BMC). ② <b>Jajaki pasar baru atau segmen pelanggan yang berbeda</b> (sesuai blok Customer Segmen). Selain itu disarankan membuat rencana keuangan yang fleksibel &amp; terus memantau kondisi pasar — prinsip adaptasi: mengubah hambatan menjadi peluang pertumbuhan melalui kemampuan beradaptasi, berinovasi &amp; terus belajar.</p>
+</div>
+</div>
+
+<hr class="divider">
+<div class="card accent-indigo" style="text-align:center">
+<h3>📌 Tips Selama UTS</h3>
+<p style="text-align:left">• <b>Jawab dengan istilah materi</b> — gunakan terminologi resmi dari slide (contoh: "perantara pelanggan/customer interface", "kesiapan pengikut/follower readiness").<br>
+• <b>Untuk soal "jelaskan"</b> — sebutkan definisi singkat + poin-poin + contoh bila ada.<br>
+• <b>Untuk soal "mengapa"</b> — kaitkan dengan karakteristik bisnis (kompleks, dinamis) atau dampak praktisnya.<br>
+• <b>Hersey-Blanchard</b> — hafalkan pola S1(R1), S2(R2), S3(R3), S4(R4) + kombinasi pengarahan/dukungan.<br>
+• <b>ATM</b> — jangan lupa: bukan plagiat karena ada MODIFIKASI; yang ditiru 9 hal, yang dimodifikasi = karakter/sumber daya/gaya/kondisi Anda pada 4P.<br>
+• <b>7 Kebiasaan</b> — urutkan: Proaktif → Tujuan Akhir → Utama → Menang-Menang → Pahami-Dulu → Sinergi → Asah Gergaji (3 pribadi + 3 sosial + 1 renewal).</p>
+</div>
+		</div>
+	</section>
+</Layout>
