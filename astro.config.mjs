@@ -3,8 +3,9 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-	// GitHub Pages project site: https://muhammadafiqyunanto27.github.io/manajemen-bisnis/
 	site: 'https://muhammadafiqyunanto27.github.io',
-	base: '/manajemen-bisnis',
+	// GitHub Pages (project site) butuh base /manajemen-bisnis;
+	// di Vercel & lokal site di-root, jadi base '/'.
+	base: process.env.GITHUB_ACTIONS ? '/manajemen-bisnis' : '/',
 	integrations: [react()],
 });

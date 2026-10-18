@@ -15,7 +15,8 @@ const {
 	subheading,
 } = Astro.props;
 
-const base = import.meta.env.BASE_URL;
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const home = base === '' ? '/' : base;
 ---
 
 <!doctype html>
@@ -33,7 +34,7 @@ const base = import.meta.env.BASE_URL;
 	<body>
 		<nav>
 			<div class="wrap">
-				<a href={base}>Beranda</a>
+				<a href={home}>Beranda</a>
 				<a href={`${base}/rangkuman`}>Rangkuman</a>
 				<a href={`${base}/soal-uts`}>Jawaban Soal UTS</a>
 				<a href={`${base}/latihan`}>Latihan Soal</a>
