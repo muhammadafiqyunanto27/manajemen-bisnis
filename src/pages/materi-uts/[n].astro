@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Pager from '../../components/Pager.astro';
+import { intisari, kutipan, type Poin } from '../../data/intisari';
+import { babUts, type BabUts } from '../../data/materiUts';
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+
+export function getStaticPaths() {
+	const b = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+	const items = babUts.map((x) => ({
+		n: x.n,
+		short: String(x.n),
+		href: `${b}/materi-uts/${x.n}`,
+	}));
+	return babUts.map((bab) => ({
+		params: { n: String(bab.n) },
+		props: {
+			bab,
+			list: intisari.filter((t) => bab.topics.includes(t.n)),
+			current: bab.n,
+			items,
+		},
+	}));
+}
+
+interface Props {
+	bab: BabUts;
+	list: Poin[];
+	current: number;
+	items: { n: number; short: string; href: string }[];
+}
+
+const { bab, list, current, items } = Astro.props;
+const poinCount = list.reduce((s, t) => s + t.poin.length, 0);
+const istilahCount = list.reduce((s, t) => s + t.istilah.length, 0);
+const kutipanCount = kutipan.filter((k) => bab.topics.includes(k.topik)).length;
+const quotesOf = (n: number) => kutipan.filter((k) => k.topik === n);
+---
+
+<Layout
+	title={`Bab ${bab.n}: ${bab.title} — Materi UTS Manajemen Bisnis`}
+	description={`Materi UTS Bab ${bab.n} — ${bab.desc}. Poin hafalan, istilah kunci, dan kutipan tokoh.`}
+	active="materi-uts"
+	crumb={`Materi UTS · Bab ${bab.n} dari ${babUts.length}`}
+	heading={`Bab ${bab.n}: ${bab.title}`}
+	subheading={`${bab.desc} · ${poinCount} poin hafalan · ${istilahCount} istilah kunci dijelaskan · ${kutipanCount} kutipan tokoh`}
+>
+	<div class="wrap page-body">
+		<div class="inti-grid">
+			{
+				list.map((t) => (
+					<article class="card inti">
+						<h3>
+							<span class="tag inti-n">{String(t.n).padStart(2, '0')}</span>
+							{t.judul}
+						</h3>
+						<ul class="inti-list">
+							{t.poin.map((p) => (
+								<li set:html={p} />
+							))}
+						</ul>
+						{t.istilah.length > 0 && (
+							<div class="istilah-wrap">
+								<h4 class="istilah-title">Istilah Kunci</h4>
+								{t.istilah.map((ist) => (
+									<div class="istilah">
+										<p
+											class="istilah-apa"
+											set:html={`<b>${ist.nama}</b> — ${ist.apa}`}
+										/>
+										<ol class="istilah-isi">
+											{ist.isi.map((x) => (
+												<li set:html={x} />
+											))}
+										</ol>
+									</div>
+								))}
+							</div>
+						)}
+						{quotesOf(t.n).length > 0 && (
+							<div class="istilah-wrap">
+								<h4 class="istilah-title">Kutipan Tokoh</h4>
+								<div class="quote-list">
+									{quotesOf(t.n).map((q) => (
+										<blockquote>
+											{q.teks}
+											<cite>— {q.siapa}</cite>
+										</blockquote>
+									))}
+								</div>
+							</div>
+						)}
+					</article>
+				))
+			}
+		</div>
+	</div>
+	<Pager items={items} current={current} unit="bab" />
+</Layout>

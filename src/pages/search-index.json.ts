@@ -3,6 +3,7 @@ import { topics, chapters } from '../data/topics';
 import { soalUts } from '../data/soalUts';
 import { latihanSoal } from '../data/latihanSoal';
 import { intisari, kutipan } from '../data/intisari';
+import { babUts } from '../data/materiUts';
 
 const chapOfInti = new Map(topics.map((t) => [t.n, t.chapter]));
 const intisariRecords = [
@@ -41,6 +42,30 @@ const intisariRecords = [
 	},
 ];
 
+const babUtsRecords = babUts.map((bab) => {
+	const list = intisari.filter((t) => bab.topics.includes(t.n));
+	return {
+		kind: 'Materi UTS',
+		url: `materi-uts/${bab.n}`,
+		title: `Bab ${bab.n} — ${bab.title}`,
+		meta: `Materi UTS · ${bab.desc}`,
+		text: list
+			.map(
+				(t) =>
+					`${t.judul}: ${t.poin.join(' ').replace(/<[^>]+>/g, '')} ` +
+					t.istilah
+						.map((ist) => `${ist.nama} ${ist.apa.replace(/<[^>]+>/g, '')}`)
+						.join(' ') +
+					' ' +
+					kutipan
+						.filter((k) => k.topik === t.n)
+						.map((k) => `${k.siapa}: ${k.teks}`)
+						.join(' ')
+			)
+			.join(' '),
+	};
+});
+
 export const GET: APIRoute = () => {
 	const records = [
 		...topics.map((t) => {
@@ -68,6 +93,7 @@ export const GET: APIRoute = () => {
 			text: s.text,
 		})),
 		...intisariRecords,
+		...babUtsRecords,
 	];
 	return new Response(JSON.stringify(records), {
 		headers: { 'Content-Type': 'application/json; charset=utf-8' },

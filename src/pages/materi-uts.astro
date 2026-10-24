@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { intisari, kutipan } from '../data/intisari';
+import { babUts, utsInfo } from '../data/materiUts';
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+
+const babs = babUts.map((b) => {
+	const list = intisari.filter((t) => b.topics.includes(t.n));
+	return {
+		...b,
+		list,
+		poin: list.reduce((s, t) => s + t.poin.length, 0),
+		istilah: list.reduce((s, t) => s + t.istilah.length, 0),
+		kutipan: kutipan.filter((k) => b.topics.includes(k.topik)).length,
+	};
+});
+const totalPoin = babs.reduce((s, b) => s + b.poin, 0);
+const totalKutipan = babs.reduce((s, b) => s + b.kutipan, 0);
+---
+
+<Layout
+	title="Materi UTS Manajemen Bisnis — 6 Bab + Kutipan Tokoh"
+	description="Materi UTS Manajemen Bisnis: 6 bab (Pendahuluan sampai Bisnis Plan dengan BMC) berisi poin hafalan, istilah kunci, dan kutipan tokoh."
+	active="materi-uts"
+	crumb={`Materi UTS · ${babUts.length} Bab`}
+	heading="Materi UTS Manajemen Bisnis"
+	subheading={`Daftar bab resmi UTS (${utsInfo.date}): 6 bab → ${totalPoin} poin hafalan + ${totalKutipan} kutipan tokoh. Tiap bab satu halaman biar ringan.`}
+>
+	<div class="wrap page-body">
+		<p class="note">
+			<b>UTS: {utsInfo.date}</b> · Dosen pengampu: {utsInfo.dosen}. Enam bab di bawah ini sesuai
+			daftar materi dari dosen — klik bab untuk membaca poin hafalan, penjelasan istilah kunci,
+			dan kutipan tokohnya. Cari kata tertentu dengan <b>Ctrl + K</b>.
+		</p>
+		<div class="syl-chapter">
+			<ul class="syl-topics syl--preview">
+				{
+					babs.map((b) => (
+						<li>
+							<a class="syl-row" href={`${base}/materi-uts/${b.n}`}>
+								<span class="syl-n">{b.n}</span>
+								<span class="syl-main">
+									<b>
+										Bab {b.n} · {b.title}
+									</b>
+									<small>
+										{b.list.length} topik · {b.poin} poin hafalan · {b.istilah} istilah
+										kunci · {b.kutipan} kutipan
+									</small>
+								</span>
+								<span class="syl-arrow" aria-hidden="true">→</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+		<p class="note">
+			Mau semua kutipan sekaligus? Buka <a href={`${base}/intisari/kutipan`}>Kutipan Tokoh</a>.
+			Versi ringkas seluruh topik ada di <a href={`${base}/intisari`}>Intisari &amp; Hafalan</a>.
+		</p>
+	</div>
+</Layout>

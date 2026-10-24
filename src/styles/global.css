@@ -1148,6 +1148,21 @@ ol.istilah-isi li {
 ol.istilah-isi li::marker {
 	font-weight: 700;
 }
+.quote-list {
+	display: grid;
+	gap: 10px;
+}
+.quote-list blockquote {
+	margin: 0;
+	padding: 11px 14px;
+	font-size: 14px;
+	line-height: 1.55;
+	border-left-width: 3px;
+}
+.quote-list blockquote cite {
+	margin-top: 6px;
+	font-size: 12.5px;
+}
 .kutipan-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
