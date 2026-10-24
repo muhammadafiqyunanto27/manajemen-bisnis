@@ -3,7 +3,7 @@ import { topics, chapters } from '../data/topics';
 import { soalUts } from '../data/soalUts';
 import { latihanSoal } from '../data/latihanSoal';
 import { intisari, kutipan } from '../data/intisari';
-import { babUts } from '../data/materiUts';
+import { babUts, definisiAhli } from '../data/materiUts';
 
 const chapOfInti = new Map(topics.map((t) => [t.n, t.chapter]));
 const intisariRecords = [
@@ -56,6 +56,8 @@ const babUtsRecords = babUts.map((bab) => {
 					t.istilah
 						.map((ist) => `${ist.nama} ${ist.apa.replace(/<[^>]+>/g, '')}`)
 						.join(' ') +
+					' ' +
+					(definisiAhli[t.n] ?? []).map((d) => d.replace(/<[^>]+>/g, '')).join(' ') +
 					' ' +
 					kutipan
 						.filter((k) => k.topik === t.n)

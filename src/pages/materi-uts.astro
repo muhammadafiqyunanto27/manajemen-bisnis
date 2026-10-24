@@ -15,28 +15,36 @@ const babs = babUts.map((b) => {
 		kutipan: kutipan.filter((k) => b.topics.includes(k.topik)).length,
 	};
 });
+const utama = babs.filter((b) => !b.pendalaman);
+const pendalaman = babs.filter((b) => b.pendalaman);
 const totalPoin = babs.reduce((s, b) => s + b.poin, 0);
-const totalKutipan = babs.reduce((s, b) => s + b.kutipan, 0);
+const totalKutipan = kutipan.length;
 ---
 
 <Layout
-	title="Materi UTS Manajemen Bisnis — 6 Bab + Kutipan Tokoh"
-	description="Materi UTS Manajemen Bisnis: 6 bab (Pendahuluan sampai Bisnis Plan dengan BMC) berisi poin hafalan, istilah kunci, dan kutipan tokoh."
+	title="Materi UTS Manajemen Bisnis — 6 Bab Utama + Pendalaman + Kutipan Tokoh"
+	description="Materi UTS Manajemen Bisnis: 6 bab utama sesuai daftar dosen, ditambah pendalaman kepemimpinan, DISC & lainnya dari file PPT — lengkap dengan definisi para ahli, istilah kunci & kutipan tokoh."
 	active="materi-uts"
 	crumb={`Materi UTS · ${babUts.length} Bab`}
 	heading="Materi UTS Manajemen Bisnis"
-	subheading={`Daftar bab resmi UTS (${utsInfo.date}): 6 bab → ${totalPoin} poin hafalan + ${totalKutipan} kutipan tokoh. Tiap bab satu halaman biar ringan.`}
+	subheading={`6 bab utama + ${pendalaman.length} bab pendalaman dari file PPT lain → ${totalPoin} poin hafalan, definisi para ahli, istilah kunci & ${totalKutipan} kutipan tokoh. Tiap bab satu halaman biar ringan.`}
 >
 	<div class="wrap page-body">
 		<p class="note">
-			<b>UTS: {utsInfo.date}</b> · Dosen pengampu: {utsInfo.dosen}. Enam bab di bawah ini sesuai
-			daftar materi dari dosen — klik bab untuk membaca poin hafalan, penjelasan istilah kunci,
-			dan kutipan tokohnya. Cari kata tertentu dengan <b>Ctrl + K</b>.
+			<b>UTS: {utsInfo.date}</b> · Dosen pengampu: {utsInfo.dosen}. Enam bab pertama sesuai daftar
+			materi dari dosen; bab pendalaman melengkapi materi dari file PPT lain di folder kuliah
+			(kepemimpinan, DISC, dll.). Klik bab untuk membaca poin hafalan, definisi para ahli, istilah
+			kunci & kutipan tokohnya. Cari kata tertentu dengan <b>Ctrl + K</b>.
 		</p>
+
+		<div class="sec-title">
+			<h2>Bab Utama</h2>
+			<span class="sec-hint">sesuai daftar materi UTS dari dosen · {utama.length} bab</span>
+		</div>
 		<div class="syl-chapter">
 			<ul class="syl-topics syl--preview">
 				{
-					babs.map((b) => (
+					utama.map((b) => (
 						<li>
 							<a class="syl-row" href={`${base}/materi-uts/${b.n}`}>
 								<span class="syl-n">{b.n}</span>
@@ -56,6 +64,35 @@ const totalKutipan = babs.reduce((s, b) => s + b.kutipan, 0);
 				}
 			</ul>
 		</div>
+
+		<div class="sec-title">
+			<h2>Bab Pendalaman</h2>
+			<span class="sec-hint">dari file PPT lain (kepemimpinan, DISC & lainnya) · {pendalaman.length} bab</span>
+		</div>
+		<div class="syl-chapter">
+			<ul class="syl-topics syl--preview">
+				{
+					pendalaman.map((b) => (
+						<li>
+							<a class="syl-row" href={`${base}/materi-uts/${b.n}`}>
+								<span class="syl-n">{b.n}</span>
+								<span class="syl-main">
+									<b>
+										Bab {b.n} · {b.title}
+									</b>
+									<small>
+										{b.list.length} topik · {b.poin} poin hafalan · {b.istilah} istilah
+										kunci · {b.kutipan} kutipan
+									</small>
+								</span>
+								<span class="syl-arrow" aria-hidden="true">→</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+
 		<p class="note">
 			Mau semua kutipan sekaligus? Buka <a href={`${base}/intisari/kutipan`}>Kutipan Tokoh</a>.
 			Versi ringkas seluruh topik ada di <a href={`${base}/intisari`}>Intisari &amp; Hafalan</a>.

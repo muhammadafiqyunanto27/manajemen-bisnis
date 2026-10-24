@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Pager from '../../components/Pager.astro';
 import { intisari, kutipan, type Poin } from '../../data/intisari';
-import { babUts, type BabUts } from '../../data/materiUts';
+import { babUts, definisiAhli, type BabUts } from '../../data/materiUts';
 
 const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 
@@ -34,6 +34,7 @@ interface Props {
 const { bab, list, current, items } = Astro.props;
 const poinCount = list.reduce((s, t) => s + t.poin.length, 0);
 const istilahCount = list.reduce((s, t) => s + t.istilah.length, 0);
+const definisiCount = list.reduce((s, t) => s + (definisiAhli[t.n]?.length ?? 0), 0);
 const kutipanCount = kutipan.filter((k) => bab.topics.includes(k.topik)).length;
 const quotesOf = (n: number) => kutipan.filter((k) => k.topik === n);
 ---
@@ -44,7 +45,7 @@ const quotesOf = (n: number) => kutipan.filter((k) => k.topik === n);
 	active="materi-uts"
 	crumb={`Materi UTS · Bab ${bab.n} dari ${babUts.length}`}
 	heading={`Bab ${bab.n}: ${bab.title}`}
-	subheading={`${bab.desc} · ${poinCount} poin hafalan · ${istilahCount} istilah kunci dijelaskan · ${kutipanCount} kutipan tokoh`}
+	subheading={`${bab.desc} · ${poinCount} poin hafalan · ${istilahCount} istilah kunci · ${definisiCount} definisi para ahli · ${kutipanCount} kutipan tokoh`}
 >
 	<div class="wrap page-body">
 		<div class="inti-grid">
@@ -76,6 +77,16 @@ const quotesOf = (n: number) => kutipan.filter((k) => k.topik === n);
 										</ol>
 									</div>
 								))}
+							</div>
+						)}
+						{(definisiAhli[t.n]?.length ?? 0) > 0 && (
+							<div class="istilah-wrap">
+								<h4 class="istilah-title">Menurut Para Ahli</h4>
+								<ul class="ahli-list">
+									{definisiAhli[t.n].map((d) => (
+										<li set:html={d} />
+									))}
+								</ul>
 							</div>
 						)}
 						{quotesOf(t.n).length > 0 && (
